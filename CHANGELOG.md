@@ -23,3 +23,7 @@
 ## 2026-08-24 11:58:00
 - **Description:** Iteration 6: Ingested new certificates via update_data.py. Implemented a dynamic top scroll progress bar tracking user scroll position for an extra premium touch.
 - **Files Affected:** `index.html`, `script.js`, `styles.css`
+
+## 2026-08-24 12:00:00
+- **Description:** Iteration 7: Ingested new certificates via update_data.py. Added an interactive cursor glow effect that dynamically illuminates the glass panels and cards based on mouse position.
+- **Files Affected:** `script.js`, `styles.css`

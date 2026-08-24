@@ -15,6 +15,31 @@ PROJECTS = [
     r"C:\Users\Anmol\Documents\fake-news-detection"
 ]
 
+def clean_cert_name(filename):
+    mapping = {
+        "anmol-du.pdf": "Delhi University Certification",
+        "CertificatewithDescription20260822-8-94icbk.pdf": "Google Cloud Certificate",
+        "DevelopAI-PoweredPrototypesinGoogleAIStudio_Badge20260820-21-7d0hbs.pdf": "Develop AI-Powered Prototypes in Google AI Studio",
+        "WhatsApp Image 2026-08-19 at 10.57.59 (1).jpeg": "Technical Achievement Certificate 1",
+        "WhatsApp Image 2026-08-19 at 10.57.59 (2).jpeg": "Technical Achievement Certificate 2",
+        "WhatsApp Image 2026-08-19 at 10.57.59.jpeg": "Technical Achievement Certificate 3",
+        "WhatsApp Image 2026-08-19 at 11.34.22.jpeg": "Technical Achievement Certificate 4",
+        "create-your-first-gemini-enterprise-application.png": "Create Your First Gemini Enterprise Application",
+        "explore-generative-ai-with-the-vertex-ai-gemini-api.pdf": "Explore Generative AI with Vertex AI Gemini API",
+        "explore-generative-ai-with-the-vertex-ai-gemini-api.png": "Explore Generative AI with Vertex AI Gemini API (Badge)",
+        "first gemini enterprise application.pdf": "Create Your First Gemini Enterprise Application (PDF)"
+    }
+    if filename in mapping:
+        return mapping[filename]
+    
+    # Fallback cleaner
+    name = os.path.splitext(filename)[0]
+    name = name.replace('-', ' ').replace('_', ' ')
+    # Add space before capitals if missing (camelCase/PascalCase to spaces)
+    import re
+    name = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', name)
+    return name.title()
+
 def get_certificates():
     if not os.path.exists(CER_DIR):
         return []
@@ -22,7 +47,8 @@ def get_certificates():
     for f in os.listdir(CER_DIR):
         if os.path.isfile(os.path.join(CER_DIR, f)):
             certs.append({
-                "name": f,
+                "name": clean_cert_name(f),
+                "filename": f,
                 "path": f"cer/{f}",
                 "type": f.split('.')[-1].lower()
             })

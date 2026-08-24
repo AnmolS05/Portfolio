@@ -1,57 +1,68 @@
 const portfolioData = {
     "certificates": [
         {
-            "name": "anmol-du.pdf",
+            "name": "Delhi University Certification",
+            "filename": "anmol-du.pdf",
             "path": "cer/anmol-du.pdf",
             "type": "pdf"
         },
         {
-            "name": "CertificatewithDescription20260822-8-94icbk.pdf",
+            "name": "Google Cloud Certificate",
+            "filename": "CertificatewithDescription20260822-8-94icbk.pdf",
             "path": "cer/CertificatewithDescription20260822-8-94icbk.pdf",
             "type": "pdf"
         },
         {
-            "name": "create-your-first-gemini-enterprise-application.png",
+            "name": "Create Your First Gemini Enterprise Application",
+            "filename": "create-your-first-gemini-enterprise-application.png",
             "path": "cer/create-your-first-gemini-enterprise-application.png",
             "type": "png"
         },
         {
-            "name": "DevelopAI-PoweredPrototypesinGoogleAIStudio_Badge20260820-21-7d0hbs.pdf",
+            "name": "Develop AI-Powered Prototypes in Google AI Studio",
+            "filename": "DevelopAI-PoweredPrototypesinGoogleAIStudio_Badge20260820-21-7d0hbs.pdf",
             "path": "cer/DevelopAI-PoweredPrototypesinGoogleAIStudio_Badge20260820-21-7d0hbs.pdf",
             "type": "pdf"
         },
         {
-            "name": "explore-generative-ai-with-the-vertex-ai-gemini-api.pdf",
+            "name": "Explore Generative AI with Vertex AI Gemini API",
+            "filename": "explore-generative-ai-with-the-vertex-ai-gemini-api.pdf",
             "path": "cer/explore-generative-ai-with-the-vertex-ai-gemini-api.pdf",
             "type": "pdf"
         },
         {
-            "name": "explore-generative-ai-with-the-vertex-ai-gemini-api.png",
+            "name": "Explore Generative AI with Vertex AI Gemini API (Badge)",
+            "filename": "explore-generative-ai-with-the-vertex-ai-gemini-api.png",
             "path": "cer/explore-generative-ai-with-the-vertex-ai-gemini-api.png",
             "type": "png"
         },
         {
-            "name": "first gemini enterprise application.pdf",
+            "name": "Create Your First Gemini Enterprise Application (PDF)",
+            "filename": "first gemini enterprise application.pdf",
             "path": "cer/first gemini enterprise application.pdf",
             "type": "pdf"
         },
         {
-            "name": "WhatsApp Image 2026-08-19 at 10.57.59 (1).jpeg",
+            "name": "Technical Achievement Certificate 1",
+            "filename": "WhatsApp Image 2026-08-19 at 10.57.59 (1).jpeg",
             "path": "cer/WhatsApp Image 2026-08-19 at 10.57.59 (1).jpeg",
             "type": "jpeg"
         },
         {
-            "name": "WhatsApp Image 2026-08-19 at 10.57.59 (2).jpeg",
+            "name": "Technical Achievement Certificate 2",
+            "filename": "WhatsApp Image 2026-08-19 at 10.57.59 (2).jpeg",
             "path": "cer/WhatsApp Image 2026-08-19 at 10.57.59 (2).jpeg",
             "type": "jpeg"
         },
         {
-            "name": "WhatsApp Image 2026-08-19 at 10.57.59.jpeg",
+            "name": "Technical Achievement Certificate 3",
+            "filename": "WhatsApp Image 2026-08-19 at 10.57.59.jpeg",
             "path": "cer/WhatsApp Image 2026-08-19 at 10.57.59.jpeg",
             "type": "jpeg"
         },
         {
-            "name": "WhatsApp Image 2026-08-19 at 11.34.22.jpeg",
+            "name": "Technical Achievement Certificate 4",
+            "filename": "WhatsApp Image 2026-08-19 at 11.34.22.jpeg",
             "path": "cer/WhatsApp Image 2026-08-19 at 11.34.22.jpeg",
             "type": "jpeg"
         }

@@ -124,6 +124,17 @@ window.addEventListener('scroll', () => {
     document.getElementById('scroll-progress').style.width = scrolled + "%";
 });
 
+// Interactive Glass Glow
+document.addEventListener('mousemove', e => {
+    document.querySelectorAll('.glass-panel, .card').forEach(panel => {
+        const rect = panel.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        panel.style.setProperty('--mouse-x', `${x}px`);
+        panel.style.setProperty('--mouse-y', `${y}px`);
+    });
+});
+
 // Typewriter Logic
 const textToType = "Software Developer & Innovator";
 let typeIndex = 0;
@@ -171,7 +182,7 @@ function loadCertificates(certs) {
         card.className = 'card tilt-card';
         card.onclick = () => window.open(cert.path, '_blank');
         card.innerHTML = `
-            <h3>${formatName(cert.name)}</h3>
+            <h3>${cert.name}</h3>
             <p>Click to view certificate.</p>
             <span class="cert-type">${cert.type}</span>
         `;
