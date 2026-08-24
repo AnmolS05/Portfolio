@@ -321,6 +321,12 @@ function loadProjects(projects) {
         container.appendChild(card);
         observer.observe(card);
     });
+    
+    // Update section title with count
+    const title = document.querySelector('#projects .section-title');
+    if (title && !title.innerText.includes('(')) {
+        title.innerText = `Projects (${projects.length})`;
+    }
 }
 
 function loadCertificates(certs) {
@@ -346,6 +352,12 @@ function loadCertificates(certs) {
         container.appendChild(card);
         observer.observe(card);
     });
+    
+    // Update section title with count
+    const title = document.querySelector('#certificates .section-title');
+    if (title && !title.innerText.includes('(')) {
+        title.innerText = `Certificates (${certs.length})`;
+    }
     
     initTilt();
 }

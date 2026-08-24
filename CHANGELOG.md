@@ -127,3 +127,7 @@
 ## 2026-08-24 12:51:00
 - **Description:** Iteration 32: Ingested new certificates via update_data.py. Implemented Dynamic Brand Coloring for Project Tags. The technology tags in your project cards (e.g., React, Python, Node, HTML) now automatically detect the technology name and apply their respective official brand colors, complete with tinted translucent backgrounds and crisp borders, dramatically improving visual scanning.
 - **Files Affected:** `script.js`
+
+## 2026-08-24 12:51:00
+- **Description:** Iteration 32: Ingested new certificates via update_data.py. Added Dynamic Badges to Section Titles. The 'Projects' and 'Certificates' section headers now dynamically read the JSON data to automatically append a numerical count of your achievements (e.g. 'Projects (8)'). This provides immediate context for visitors before they even begin scrolling.
+- **Files Affected:** `script.js`
