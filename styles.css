@@ -352,7 +352,7 @@ h1, h2, h3 {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    background: #111;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -360,11 +360,39 @@ h1, h2, h3 {
     text-decoration: none;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
     margin: 0 auto 1rem auto;
+    position: relative;
+    z-index: 1;
+}
+
+.avatar::before {
+    content: '';
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    background: conic-gradient(from 0deg, var(--accent), #8b5cf6, var(--accent));
+    border-radius: 50%;
+    z-index: -1;
+    animation: spinGradient 4s linear infinite;
+}
+
+@keyframes spinGradient {
+    100% { transform: rotate(360deg); }
+}
+
+.avatar::after {
+    content: 'A';
+    position: absolute;
+    top: 2px; left: 2px; right: 2px; bottom: 2px;
+    background: var(--glass-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
 }
 
 .avatar:hover {
-    transform: scale(1.1) rotate(-5deg);
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.8);
 }
 
 .fade-in-up {
@@ -584,6 +612,42 @@ h1, h2, h3 {
     width: 60px;
 }
 
+/* Skill Bars */
+.skill-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+}
+
+.skill-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transform-origin: left;
+    animation: fillBar 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes fillBar {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+}
+
 .intro-text {
     font-size: 1.2rem;
     line-height: 1.8;
@@ -699,6 +763,8 @@ h1, h2, h3 {
     text-transform: uppercase;
     font-weight: 600;
 }
+
+
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }

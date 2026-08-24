@@ -179,3 +179,11 @@
 ## 2026-08-24 13:18:00
 - **Description:** Iteration 46: Ingested new certificates via update_data.py. Upgraded the Profile Tagline 'Typewriter Effect'. Instead of just typing out 'Software Developer & Innovator' once and stopping, it now infinitely cycles through a dynamic list of your roles (Full-Stack Engineer, Applied AI Enthusiast, Geospatial Data Visualizer). It smoothly types, pauses, erases itself, and types the next phrase. I also added a realistic blinking cursor to complete the terminal aesthetic.
 - **Files Affected:** `styles.css`, `script.js`
+
+## 2026-08-24 13:20:00
+- **Description:** Iteration 47: Ingested new certificates via update_data.py. Upgraded the 'Skills' section in the About tab. It is no longer just a comma-separated text list; it has been transformed into a dynamic 'Core Stack' visualizer featuring sleek, horizontally filling progress bars. The bars use gradient color fills that correspond to their respective tech stacks (e.g., Python yellow/blue, React cyan/green). They animate in smoothly when the page loads.
+- **Files Affected:** `index.html`, `styles.css`
+
+## 2026-08-24 13:23:00
+- **Description:** Iteration 48: Ingested new certificates via update_data.py. Upgraded the Profile Avatar. It no longer has a static gradient background. Instead, the 'A' sits inside a clean glassmorphic disc, encircled by an infinitely spinning, animated conic gradient border. This adds a highly sophisticated, sci-fi/AI-inspired energy to the sidebar.
+- **Files Affected:** `index.html`, `styles.css`
