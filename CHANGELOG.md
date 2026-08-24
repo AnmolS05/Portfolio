@@ -95,3 +95,7 @@
 ## 2026-08-24 12:34:00
 - **Description:** Iteration 24: Ingested new certificates via update_data.py. Enhanced the Project and Certificate cards with a dynamic 'Illuminated Glow Border' effect on hover. When hovering over a card, its border lights up with the accent color and casts a premium neon drop-shadow, making the interface feel highly tactile.
 - **Files Affected:** `styles.css`
+
+## 2026-08-24 12:36:00
+- **Description:** Iteration 25: Ingested new certificates via update_data.py. Upgraded the AI Chatbot's message bubbles. The AI's responses are no longer flat shapes; they now feature a beautiful glassmorphism effect (frosted blur and subtle borders) which elegantly contrasts with the user's solid accent-colored messages.
+- **Files Affected:** `styles.css`
