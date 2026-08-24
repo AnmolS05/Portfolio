@@ -191,3 +191,7 @@
 ## 2026-08-24 13:24:00
 - **Description:** Iteration 49: Ingested new certificates via update_data.py. Implemented a 'Terminal Boot Sequence' on initial page load. When a user first opens your portfolio, the screen is covered by a dark overlay where terminal text rapidly types out: 'Initializing system... Loading components... Establishing secure connection... Access granted. Welcome.' before smoothly fading away to reveal the UI. It uses 'sessionStorage' so it only happens once per session, preventing it from being annoying on refresh.
 - **Files Affected:** `index.html`, `styles.css`, `script.js`
+
+## 2026-08-24 13:26:00
+- **Description:** Iteration 50: Ingested new certificates via update_data.py. Added an Interactive Particle Network Background using HTML5 Canvas. A constellation of purple/accent particles now gently float behind the glass panels of the portfolio. They subtly react to your mouse movements—connecting with lines when close to each other, and dodging the cursor. This gives the entire site a highly dynamic, living backdrop.
+- **Files Affected:** `index.html`, `styles.css`, `script.js`
