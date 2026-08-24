@@ -169,6 +169,13 @@ h1, h2, h3 {
     font-size: 2rem;
     font-weight: bold;
     margin: 0 auto 1rem;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    animation: avatarPulse 2s infinite alternate;
+}
+
+@keyframes avatarPulse {
+    0% { box-shadow: 0 0 10px rgba(56, 189, 248, 0.3); transform: scale(1); }
+    100% { box-shadow: 0 0 25px rgba(139, 92, 246, 0.7); transform: scale(1.05); }
 }
 
 .tagline {

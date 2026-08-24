@@ -27,3 +27,7 @@
 ## 2026-08-24 12:00:00
 - **Description:** Iteration 7: Ingested new certificates via update_data.py. Added an interactive cursor glow effect that dynamically illuminates the glass panels and cards based on mouse position.
 - **Files Affected:** `script.js`, `styles.css`
+
+## 2026-08-24 12:02:00
+- **Description:** Iteration 8: Refactored update_data.py to properly map and clean raw certificate file names into professional display titles. Added a pulsing neon glow animation to the avatar in the sidebar.
+- **Files Affected:** `update_data.py`, `script.js`, `styles.css`
