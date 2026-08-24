@@ -182,11 +182,19 @@ function initChatbot() {
 
 // Scroll Progress, Spy Logic & Scroll to Top
 window.addEventListener('scroll', () => {
-    // Progress Bar
+    // Progress Bar & Cursor Progress Ring
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    document.getElementById('scroll-progress').style.width = scrolled + "%";
+    const scrolledPercentage = winScroll / height;
+    
+    document.getElementById('scroll-progress').style.width = (scrolledPercentage * 100) + "%";
+    
+    const cursorProgress = document.querySelector('.cursor-progress');
+    if (cursorProgress) {
+        const circumference = 113; // 2 * pi * 18
+        const offset = circumference - (scrolledPercentage * circumference);
+        cursorProgress.style.strokeDashoffset = offset;
+    }
     
     // Scroll to Top Button
     const scrollTopBtn = document.getElementById('scrollTopBtn');
