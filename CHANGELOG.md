@@ -47,3 +47,7 @@
 ## 2026-08-24 12:10:00
 - **Description:** Iteration 12: Ingested new certificates via update_data.py. Added an interactive custom 'magic cursor' that replaces the default pointer. It smoothly trails the mouse and expands with a blend-mode effect when hovering over interactive elements like cards and buttons.
 - **Files Affected:** `index.html`, `script.js`, `styles.css`
+
+## 2026-08-24 12:12:00
+- **Description:** Iteration 13: Ingested new certificates via update_data.py. Added an interactive magnetic hover effect to the sidebar navigation links. The links dynamically pull toward the cursor, creating a highly tactile, premium feel.
+- **Files Affected:** `script.js`, `styles.css`

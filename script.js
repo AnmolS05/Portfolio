@@ -168,6 +168,19 @@ document.querySelectorAll('a, button, .card').forEach(el => {
     el.addEventListener('mouseleave', () => customCursor?.classList.remove('hovering'));
 });
 
+// Magnetic Links
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('mousemove', e => {
+        const rect = link.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+        const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+        link.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    link.addEventListener('mouseleave', () => {
+        link.style.transform = `translate(0px, 0px)`;
+    });
+});
+
 // Typewriter Logic
 const textToType = "Software Developer & Innovator";
 let typeIndex = 0;
