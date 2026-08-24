@@ -256,6 +256,35 @@ document.querySelectorAll('a, button, .card').forEach(el => {
     el.addEventListener('mouseleave', () => customCursor?.classList.remove('hovering'));
 });
 
+// Hacker Text Scramble Effect
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const profileName = document.getElementById('profile-name');
+
+if (profileName) {
+    profileName.addEventListener('mouseover', event => {
+        let iteration = 0;
+        clearInterval(profileName.dataset.interval);
+        
+        profileName.dataset.interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+                .split("")
+                .map((letter, index) => {
+                    if(index < iteration) {
+                        return event.target.dataset.value[index];
+                    }
+                    return letters[Math.floor(Math.random() * 26)];
+                })
+                .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+                clearInterval(profileName.dataset.interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+    });
+}
+
 // Magnetic Links & Buttons
 document.querySelectorAll('.nav-link, .btn-primary').forEach(link => {
     link.addEventListener('mousemove', e => {
