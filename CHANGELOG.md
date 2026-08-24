@@ -39,3 +39,7 @@
 ## 2026-08-24 12:06:00
 - **Description:** Iteration 10: Ingested new certificates via update_data.py. Implemented a scroll-based Intersection Observer that dynamically triggers smooth fade-in and slide-up animations on cards as they enter the viewport.
 - **Files Affected:** `script.js`, `styles.css`
+
+## 2026-08-24 12:08:00
+- **Description:** Iteration 11: Ingested new certificates via update_data.py. Added an interactive 3D glare/glint effect to the project and certificate cards. The reflection dynamically moves based on the cursor position over the card.
+- **Files Affected:** `script.js`, `styles.css`

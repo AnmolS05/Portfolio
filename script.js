@@ -196,9 +196,12 @@ function loadProjects(projects) {
         const card = document.createElement('div');
         card.className = 'card tilt-card fade-in-up';
         card.innerHTML = `
+            <div class="glare"></div>
             <h3>${formatName(proj.name)}</h3>
             <p>${proj.description}</p>
-            <span class="cert-type">Project</span>
+            <div class="tags">
+                ${proj.technologies.slice(0,3).map(t => `<span>${t}</span>`).join('')}
+            </div>
         `;
         container.appendChild(card);
         observer.observe(card);
@@ -219,6 +222,7 @@ function loadCertificates(certs) {
         card.className = 'card tilt-card fade-in-up';
         card.onclick = () => window.open(cert.path, '_blank');
         card.innerHTML = `
+            <div class="glare"></div>
             <h3>${cert.name}</h3>
             <p>Click to view certificate.</p>
             <span class="cert-type">${cert.type}</span>
@@ -245,10 +249,19 @@ function initTilt() {
             const rotateY = ((x - centerX) / centerX) * 10;
             
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            
+            const glare = card.querySelector('.glare');
+            if (glare) {
+                glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.2), transparent 50%)`;
+            }
         });
         
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+            const glare = card.querySelector('.glare');
+            if (glare) {
+                glare.style.background = `radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2), transparent 50%)`;
+            }
         });
     });
 }
