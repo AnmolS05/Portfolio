@@ -159,3 +159,7 @@
 ## 2026-08-24 13:08:00
 - **Description:** Iteration 41: Ingested new certificates via update_data.py. Implemented a 'Cursor Scroll Progress Indicator'. The custom mouse cursor is no longer just a floating orb. It is now wrapped in a dynamic SVG circle that physically fills up and draws itself around the cursor in real-time as the user scrolls down the portfolio, providing a hyper-modern, 'next-level' sense of spatial awareness.
 - **Files Affected:** `index.html`, `script.js`, `styles.css`
+
+## 2026-08-24 13:10:00
+- **Description:** Iteration 42: Ingested new certificates via update_data.py. Added a 'Neon Glow Pulse' to the active sidebar navigation links. The small accent-colored dot that indicates which section you are currently viewing now emits a soft, rhythmic neon glow. It adds a subtle 'heartbeat' to the interface, pulling the eye just enough to keep the user oriented without being distracting.
+- **Files Affected:** `styles.css`
