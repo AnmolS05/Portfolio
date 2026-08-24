@@ -273,6 +273,31 @@ h1, h2, h3 {
     transform: scale(1.1) rotate(5deg);
 }
 
+#scrollTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 35px;
+    z-index: 99;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 12px 18px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+#scrollTopBtn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
 .profile {
     text-align: center;
     margin-bottom: 3rem;

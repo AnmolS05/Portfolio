@@ -182,13 +182,21 @@ function initChatbot() {
     }
 }
 
-// Scroll Progress & Spy Logic
+// Scroll Progress, Spy Logic & Scroll to Top
 window.addEventListener('scroll', () => {
     // Progress Bar
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (winScroll / height) * 100;
     document.getElementById('scroll-progress').style.width = scrolled + "%";
+    
+    // Scroll to Top Button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    if (winScroll > 300) {
+        scrollTopBtn.style.display = "block";
+    } else {
+        scrollTopBtn.style.display = "none";
+    }
 
     // Scroll Spy
     let currentSection = '';
@@ -202,10 +210,15 @@ window.addEventListener('scroll', () => {
 
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href').includes(currentSection)) {
+        if (link.getAttribute('href').substring(1) === currentSection) {
             link.classList.add('active');
         }
     });
+});
+
+// Scroll to top functionality
+document.getElementById('scrollTopBtn')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Interactive Glass Glow & Cursor
