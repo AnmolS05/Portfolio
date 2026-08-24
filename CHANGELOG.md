@@ -91,3 +91,7 @@
 ## 2026-08-24 12:32:00
 - **Description:** Iteration 23: Ingested new certificates via update_data.py. Added a dynamic, magnetic pulse effect to the profile Avatar (sidebar). Hovering over the avatar now causes it to gently pop out and emit a soft glowing shadow, making the sidebar feel more alive and interactive.
 - **Files Affected:** `styles.css`
+
+## 2026-08-24 12:34:00
+- **Description:** Iteration 24: Ingested new certificates via update_data.py. Enhanced the Project and Certificate cards with a dynamic 'Illuminated Glow Border' effect on hover. When hovering over a card, its border lights up with the accent color and casts a premium neon drop-shadow, making the interface feel highly tactile.
+- **Files Affected:** `styles.css`
