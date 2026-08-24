@@ -9,14 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Remove active class from all
             navLinks.forEach(l => l.classList.remove('active'));
-            sections.forEach(s => s.classList.remove('active'));
-
-            // Add active class to clicked link
-            link.classList.add('active');
-
-            // Show corresponding section
+            // Smooth scroll to section
             const targetId = link.getAttribute('href').substring(1);
-            document.getElementById(targetId).classList.add('active');
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 

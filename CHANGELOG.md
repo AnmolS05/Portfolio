@@ -151,3 +151,7 @@
 ## 2026-08-24 13:02:00
 - **Description:** Iteration 38: Ingested new certificates via update_data.py. Added a 'Cyberpunk Text Scramble' effect to your main Profile Name. When a user hovers over 'Anmol' in the sidebar, the text instantly scrambles into rapid-fire randomized letters before smoothly decoding back into your name, giving it a very tech-forward, high-end feel.
 - **Files Affected:** `index.html`, `script.js`
+
+## 2026-08-24 13:07:00
+- **Description:** Iteration 39: Ingested new certificates via update_data.py. BUGFIX: Fixed an issue where Projects and Certificates sections were hidden by default, preventing scrolling and breaking the Scroll Spy. UI UPGRADE: Added a 'Cinematic Film Grain' texture overlay. A subtle SVG noise filter now spans the background beneath the glowing shapes, giving the sleek dark mode an ultra-premium, tactile matte finish.
+- **Files Affected:** `index.html`, `script.js`, `styles.css`
