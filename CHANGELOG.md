@@ -99,3 +99,7 @@
 ## 2026-08-24 12:36:00
 - **Description:** Iteration 25: Ingested new certificates via update_data.py. Upgraded the AI Chatbot's message bubbles. The AI's responses are no longer flat shapes; they now feature a beautiful glassmorphism effect (frosted blur and subtle borders) which elegantly contrasts with the user's solid accent-colored messages.
 - **Files Affected:** `styles.css`
+
+## 2026-08-24 12:38:00
+- **Description:** Iteration 26: Ingested new certificates via update_data.py. Replaced the default browser scrollbar with a sleek, minimalist, translucent custom scrollbar that perfectly complements the dark-mode glassmorphism aesthetic.
+- **Files Affected:** `styles.css`
