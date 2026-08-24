@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initChatbot();
 
     // 3D Tilt Effect
-    initTiltEffect();
+    initTilt();
 
     // Boot Sequence
     initBootSequence();
