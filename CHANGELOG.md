@@ -55,3 +55,7 @@
 ## 2026-08-24 12:14:00
 - **Description:** Iteration 14: Ingested new certificates via update_data.py. Upgraded the AI Chatbot floating toggle button with a continuous animated pulsing 'ripple' effect, drawing attention to it as a premium interactive element.
 - **Files Affected:** `styles.css`
+
+## 2026-08-24 12:16:00
+- **Description:** Iteration 15: Ingested new certificates via update_data.py. Added an interactive parallax effect to the ambient background shapes, causing them to subtly shift and drift in response to the user's mouse position, greatly deepening the 3D aesthetic of the environment.
+- **Files Affected:** `script.js`, `styles.css`

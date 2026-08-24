@@ -153,6 +153,17 @@ document.addEventListener('mousemove', e => {
         customCursor.style.top = e.clientY + 'px';
     }
 
+    // Parallax background shapes
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+    
+    document.querySelectorAll('.shape').forEach((shape, index) => {
+        const speed = (index + 1) * 30;
+        const xOffset = (x - 0.5) * speed;
+        const yOffset = (y - 0.5) * speed;
+        shape.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+    });
+
     document.querySelectorAll('.glass-panel, .card').forEach(panel => {
         const rect = panel.getBoundingClientRect();
         const x = e.clientX - rect.left;

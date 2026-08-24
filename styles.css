@@ -83,6 +83,7 @@ h1, h2, h3 {
     border-radius: 50%;
     filter: blur(80px);
     opacity: 0.4;
+    transition: transform 0.2s cubic-bezier(0.1, 0, 0.1, 1);
     animation: float 20s infinite alternate;
 }
 
