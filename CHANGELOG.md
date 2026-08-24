@@ -15,3 +15,7 @@
 ## 2026-08-24 11:54:00
 - **Description:** Iteration 4: Ingested new certificates via update_data.py. Implemented floating ambient shapes in the background for a modern, immersive aesthetic.
 - **Files Affected:** `index.html`, `styles.css`
+
+## 2026-08-24 11:56:00
+- **Description:** Iteration 5: Integrated Gemini AI Chatbot directly into the frontend. The chatbot reads the ingested portfolio context (from data.js) and answers questions based on the resume and projects. Secured via client-side sessionStorage input.
+- **Files Affected:** `index.html`, `script.js`, `styles.css`
