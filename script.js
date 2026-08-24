@@ -88,7 +88,12 @@ function initChatbot() {
         addTypingIndicator(typingId);
 
         try {
-            const sysContext = "You are an AI representing Anmol S Poojary. Answer questions based on this data: " + JSON.stringify(portfolioData) + ". Keep answers brief, professional, and friendly.";
+            // Sanitize data to avoid leaking local paths to visitors
+            const sanitizedData = JSON.parse(JSON.stringify(portfolioData));
+            if (sanitizedData.projects) sanitizedData.projects.forEach(p => delete p.path);
+            if (sanitizedData.certificates) sanitizedData.certificates.forEach(c => delete c.path);
+            
+            const sysContext = "You are an AI representing Anmol S Poojary. Answer questions based on this data: " + JSON.stringify(sanitizedData) + ". Keep answers brief, professional, and friendly. Never mention internal system paths.";
             const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${apiKey}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
