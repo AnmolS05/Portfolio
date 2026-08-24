@@ -51,3 +51,7 @@
 ## 2026-08-24 12:12:00
 - **Description:** Iteration 13: Ingested new certificates via update_data.py. Added an interactive magnetic hover effect to the sidebar navigation links. The links dynamically pull toward the cursor, creating a highly tactile, premium feel.
 - **Files Affected:** `script.js`, `styles.css`
+
+## 2026-08-24 12:14:00
+- **Description:** Iteration 14: Ingested new certificates via update_data.py. Upgraded the AI Chatbot floating toggle button with a continuous animated pulsing 'ripple' effect, drawing attention to it as a premium interactive element.
+- **Files Affected:** `styles.css`
