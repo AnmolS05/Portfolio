@@ -3,56 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anmol's Portfolio</title>
+    <title>Anmol | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Anmol</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="hero">
-            <h1>Hi, I'm Anmol</h1>
-            <p>Welcome to my portfolio!</p>
-            <a href="#projects" class="cta-button">View My Work</a>
-        </section>
-
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I am a software developer passionate about building great products.</p>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Project 1</h3>
-                    <p>A cool project I worked on.</p>
+    <div class="layout">
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-content">
+                <div class="profile">
+                    <div class="avatar">A</div>
+                    <h1>Anmol</h1>
+                    <p class="tagline" id="tagline-text"></p>
                 </div>
-                <div class="project-card">
-                    <h3>Project 2</h3>
-                    <p>Another amazing project.</p>
+                
+                <nav class="nav-links">
+                    <a href="#about" class="nav-link active">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#certificates" class="nav-link">Certificates</a>
+                </nav>
+
+                <div class="resume-section">
+                    <h3>Resume</h3>
+                    <a href="Anmol_S__resume.pdf" target="_blank" class="btn btn-primary">View / Download PDF</a>
                 </div>
             </div>
-        </section>
+        </aside>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Get in touch with me!</p>
-            <a href="mailto:anmol@example.com" class="cta-button">Email Me</a>
-        </section>
-    </main>
+        <main class="content-area">
+            <section id="about" class="section-block active">
+                <div class="glass-panel main-panel">
+                    <h2 class="section-title">Welcome to my universe.</h2>
+                    <p class="intro-text">Computer Science undergraduate building full-stack products across frontend, backend, applied AI, and geospatial visualization. Experienced building and deploying side projects with React, Node.js, Python, Gemini-based workflows, and Leaflet.js.</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3>🎓 Education</h3>
+                            <p><strong>NMAM Institute of Technology</strong><br>B.Tech in Computer Science and Engineering (2023 – 2027)</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>💼 Experience</h3>
+                            <p><strong>DLithe Consultancy Services</strong><br>AI & ML Intern (8 Weeks)<br><br><strong>ACM, NMAMIT</strong><br>Technical Committee Member</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>⚡ Skills</h3>
+                            <p>Python, JS/TS, SQL, C++, React.js, Node.js, FastAPI, Express, Flask, Vector DBs, Gemini API, RAG</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <a href="https://www.linkedin.com/in/anmol-s-poojary/" target="_blank" class="btn btn-primary">Connect on LinkedIn</a>
+                        <a href="https://github.com/AnmolS05/Portfolio" target="_blank" class="btn btn-primary" style="margin-left: 1rem; background: #333;">GitHub Repository</a>
+                    </div>
+                </div>
+            </section>
 
-    <footer>
-        <p>&copy; 2026 Anmol. All rights reserved.</p>
-    </footer>
+            <section id="projects" class="section-block">
+                <div class="glass-panel main-panel">
+                    <h2 class="section-title">Projects</h2>
+                    <div id="projects-container" class="grid-container">
+                        <!-- Projects dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="certificates" class="section-block">
+                <div class="glass-panel main-panel">
+                    <h2 class="section-title">Certificates</h2>
+                    <div id="certificates-container" class="grid-container">
+                        <!-- Certificates dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Data provided by python script -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
