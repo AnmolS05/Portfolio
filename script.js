@@ -159,13 +159,29 @@ document.addEventListener('mousemove', e => {
 const textToType = "Software Developer & Innovator";
 let typeIndex = 0;
 function typeWriter() {
-    const el = document.getElementById('tagline-text');
-    if (el && typeIndex < textToType.length) {
-        el.innerHTML += textToType.charAt(typeIndex);
+    if (typeIndex < textToType.length) {
+        document.getElementById("tagline-text").innerHTML += textToType.charAt(typeIndex);
         typeIndex++;
         setTimeout(typeWriter, 100);
     }
 }
+window.onload = typeWriter;
+
+// Scroll Animation Observer
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
 
 function loadProjects(projects) {
     const container = document.getElementById('projects-container');
@@ -178,13 +194,14 @@ function loadProjects(projects) {
 
     projects.forEach(proj => {
         const card = document.createElement('div');
-        card.className = 'card tilt-card';
+        card.className = 'card tilt-card fade-in-up';
         card.innerHTML = `
             <h3>${formatName(proj.name)}</h3>
             <p>${proj.description}</p>
             <span class="cert-type">Project</span>
         `;
         container.appendChild(card);
+        observer.observe(card);
     });
 }
 
@@ -199,7 +216,7 @@ function loadCertificates(certs) {
 
     certs.forEach(cert => {
         const card = document.createElement('div');
-        card.className = 'card tilt-card';
+        card.className = 'card tilt-card fade-in-up';
         card.onclick = () => window.open(cert.path, '_blank');
         card.innerHTML = `
             <h3>${cert.name}</h3>
@@ -207,6 +224,7 @@ function loadCertificates(certs) {
             <span class="cert-type">${cert.type}</span>
         `;
         container.appendChild(card);
+        observer.observe(card);
     });
     
     initTilt();

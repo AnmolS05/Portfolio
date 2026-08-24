@@ -35,3 +35,7 @@
 ## 2026-08-24 12:04:00
 - **Description:** Iteration 9: Ingested new certificates via update_data.py. Added an animated bouncing-dot typing indicator to the AI Chatbot to provide immediate visual feedback while awaiting the Gemini API response.
 - **Files Affected:** `script.js`, `styles.css`
+
+## 2026-08-24 12:06:00
+- **Description:** Iteration 10: Ingested new certificates via update_data.py. Implemented a scroll-based Intersection Observer that dynamically triggers smooth fade-in and slide-up animations on cards as they enter the viewport.
+- **Files Affected:** `script.js`, `styles.css`
