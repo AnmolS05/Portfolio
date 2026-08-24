@@ -140,6 +140,46 @@ function initChatbot() {
         const el = document.getElementById(id);
         if (el) el.remove();
     }
+    
+    // Animated Chat Placeholder
+    const placeholders = [
+        "Ask me about Anmol's projects...",
+        "What is his tech stack?",
+        "Does Anmol know React?",
+        "Tell me about his internship."
+    ];
+    let phIndex = 0;
+    let phCharIndex = 0;
+    let isDeleting = false;
+    
+    function animatePlaceholder() {
+        const currentPh = placeholders[phIndex];
+        if (isDeleting) {
+            chatInput.setAttribute('placeholder', currentPh.substring(0, phCharIndex - 1));
+            phCharIndex--;
+        } else {
+            chatInput.setAttribute('placeholder', currentPh.substring(0, phCharIndex + 1));
+            phCharIndex++;
+        }
+        
+        let typingSpeed = isDeleting ? 50 : 100;
+        
+        if (!isDeleting && phCharIndex === currentPh.length) {
+            typingSpeed = 2000; // Pause at end
+            isDeleting = true;
+        } else if (isDeleting && phCharIndex === 0) {
+            isDeleting = false;
+            phIndex = (phIndex + 1) % placeholders.length;
+            typingSpeed = 500; // Pause before new word
+        }
+        
+        setTimeout(animatePlaceholder, typingSpeed);
+    }
+    
+    // Start animation if chat input exists
+    if(chatInput) {
+        animatePlaceholder();
+    }
 }
 
 // Scroll Progress & Spy Logic
