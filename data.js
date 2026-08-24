@@ -1,7 +1,7 @@
 const portfolioData = {
     "certificates": [
         {
-            "name": "Delhi University Certification",
+            "name": "Delhi University Certificate",
             "filename": "anmol-du.pdf",
             "path": "cer/anmol-du.pdf",
             "type": "pdf"
@@ -107,6 +107,12 @@ const portfolioData = {
             "name": "fake-news-detection",
             "description": "A great project",
             "path": "C:\\Users\\Anmol\\Documents\\fake-news-detection"
+        },
+        {
+            "name": "AeroInsight",
+            "description": "A great project",
+            "path": "C:\\Users\\Anmol\\Documents\\AeroInsight",
+            "github": "AeroInsight"
         }
     ]
 };

@@ -59,10 +59,7 @@ function setDynamicGreeting() {
 function initChatbot() {
     const toggleBtn = document.getElementById('chat-toggle');
     const chatWindow = document.getElementById('chat-window');
-    const apiKeyScreen = document.getElementById('api-key-screen');
     const chatScreen = document.getElementById('chat-screen');
-    const apiKeyInput = document.getElementById('api-key-input');
-    const saveKeyBtn = document.getElementById('save-key-btn');
     const chatInput = document.getElementById('chat-input');
     const sendMsgBtn = document.getElementById('send-msg-btn');
     const chatHistory = document.getElementById('chat-history');
@@ -75,26 +72,6 @@ function initChatbot() {
             isFirstOpen = false;
             addMessage("Hi there! I'm an AI assistant based on Anmol's portfolio. Ask me anything about his projects, skills, or experience!", 'ai');
         }
-        checkApiKey();
-    });
-
-    function checkApiKey() {
-        if (sessionStorage.getItem('gemini_api_key')) {
-            apiKeyScreen.style.display = 'none';
-            chatScreen.style.display = 'flex';
-        } else {
-            apiKeyScreen.style.display = 'flex';
-            chatScreen.style.display = 'none';
-        }
-    }
-
-    saveKeyBtn.addEventListener('click', () => {
-        const key = apiKeyInput.value.trim();
-        if (key) {
-            sessionStorage.setItem('gemini_api_key', key);
-            checkApiKey();
-            addMessage("Hi there! I'm an AI assistant based on Anmol's portfolio. Ask me anything about his projects, skills, or experience!", 'ai');
-        }
     });
 
     async function handleSend() {
@@ -104,7 +81,7 @@ function initChatbot() {
         addMessage(msg, 'user');
         chatInput.value = '';
 
-        const apiKey = sessionStorage.getItem('gemini_api_key');
+        const apiKey = 'AIzaSyDjuT3RC52SsilpdxgHyJksl3o216Yv8Tw';
         if (!apiKey) return;
 
         const typingId = "typing-" + Date.now();
@@ -112,7 +89,7 @@ function initChatbot() {
 
         try {
             const sysContext = "You are an AI representing Anmol S Poojary. Answer questions based on this data: " + JSON.stringify(portfolioData) + ". Keep answers brief, professional, and friendly.";
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${apiKey}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -397,6 +374,9 @@ function loadProjects(projects) {
         const card = document.createElement('div');
         card.className = 'card tilt-card fade-in-up';
         card.style.transitionDelay = `${index * 0.1}s`;
+        const repoName = proj.github || proj.name.replace(/\s+/g, '-');
+        card.onclick = () => window.open(`https://github.com/AnmolS05/${repoName}`, '_blank');
+        card.style.cursor = 'pointer';
         card.innerHTML = `
             <div class="glare"></div>
             <h3>${formatName(proj.name)}</h3>

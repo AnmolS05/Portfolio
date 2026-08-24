@@ -195,3 +195,7 @@
 ## 2026-08-24 13:26:00
 - **Description:** Iteration 50: Ingested new certificates via update_data.py. Added an Interactive Particle Network Background using HTML5 Canvas. A constellation of purple/accent particles now gently float behind the glass panels of the portfolio. They subtly react to your mouse movements—connecting with lines when close to each other, and dodging the cursor. This gives the entire site a highly dynamic, living backdrop.
 - **Files Affected:** `index.html`, `styles.css`, `script.js`
+
+## 2026-08-24 21:45:00
+- **Description:** Iteration 52: Restored the original glassmorphism portfolio design. Fixed the 'View Project' buttons by wrapping project cards in functional anchor tags. Corrected the Delhi University Certificate name. Added a dedicated 'Resume' tab with a newly integrated timeline UI for Education and Experience, and migrated the Core Stack progress bars to this new section.
+- **Files Affected:** `index.html`, `script.js`, `styles.css`, `data.js`
