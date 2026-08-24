@@ -107,3 +107,7 @@
 ## 2026-08-24 12:40:00
 - **Description:** Iteration 27: Ingested new certificates via update_data.py. Added an Animated Chat Input Placeholder. The AI chatbot's text input box now dynamically types, deletes, and cycles through example questions, guiding the user on how to interact with the AI.
 - **Files Affected:** `script.js`
+
+## 2026-08-24 12:42:00
+- **Description:** Iteration 28: Ingested new certificates via update_data.py. Enabled Native CSS Smooth Scrolling globally. Clicking sidebar navigation links now smoothly animates the page scrolling down to the target section instead of instantly jumping, delivering a much more premium single-page application experience.
+- **Files Affected:** `styles.css`
