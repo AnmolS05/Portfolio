@@ -187,3 +187,7 @@
 ## 2026-08-24 13:23:00
 - **Description:** Iteration 48: Ingested new certificates via update_data.py. Upgraded the Profile Avatar. It no longer has a static gradient background. Instead, the 'A' sits inside a clean glassmorphic disc, encircled by an infinitely spinning, animated conic gradient border. This adds a highly sophisticated, sci-fi/AI-inspired energy to the sidebar.
 - **Files Affected:** `index.html`, `styles.css`
+
+## 2026-08-24 13:24:00
+- **Description:** Iteration 49: Ingested new certificates via update_data.py. Implemented a 'Terminal Boot Sequence' on initial page load. When a user first opens your portfolio, the screen is covered by a dark overlay where terminal text rapidly types out: 'Initializing system... Loading components... Establishing secure connection... Access granted. Welcome.' before smoothly fading away to reveal the UI. It uses 'sessionStorage' so it only happens once per session, preventing it from being annoying on refresh.
+- **Files Affected:** `index.html`, `styles.css`, `script.js`

@@ -38,6 +38,23 @@
     transform: translate(-50%, -150%);
 }
 
+#boot-sequence {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-color);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-out;
+}
+
+.boot-text {
+    font-family: 'Space Grotesk', monospace;
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
 #custom-cursor {
     position: fixed;
     width: 40px;

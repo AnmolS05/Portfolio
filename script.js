@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3D Tilt Effect
     initTiltEffect();
+
+    // Boot Sequence
+    initBootSequence();
 });
 
 function setDynamicGreeting() {
