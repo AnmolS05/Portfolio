@@ -75,3 +75,7 @@
 ## 2026-08-24 12:24:00
 - **Description:** Iteration 19: Ingested new certificates via update_data.py. Overhauled the project technology tags with a vibrant 'frosted glass pill' design. They now feature a subtle translucent background with an interactive hover state that gently lifts the tag and applies a neon drop-shadow.
 - **Files Affected:** `styles.css`
+
+## 2026-08-24 12:26:00
+- **Description:** Iteration 20: Ingested new certificates via update_data.py. Enhanced the AI Chatbot UX by adding an automated, welcoming introductory message that greets the user the very first time they open the chat widget, significantly improving the onboarding experience.
+- **Files Affected:** `script.js`

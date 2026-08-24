@@ -44,9 +44,15 @@ function initChatbot() {
     const chatInput = document.getElementById('chat-input');
     const sendMsgBtn = document.getElementById('send-msg-btn');
     const chatHistory = document.getElementById('chat-history');
+    
+    let isFirstOpen = true;
 
     toggleBtn.addEventListener('click', () => {
         chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+        if (chatWindow.style.display === 'flex' && isFirstOpen) {
+            isFirstOpen = false;
+            addMessage("Hi there! I'm an AI assistant based on Anmol's portfolio. Ask me anything about his projects, skills, or experience!", 'ai');
+        }
         checkApiKey();
     });
 
