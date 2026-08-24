@@ -19,3 +19,7 @@
 ## 2026-08-24 11:56:00
 - **Description:** Iteration 5: Integrated Gemini AI Chatbot directly into the frontend. The chatbot reads the ingested portfolio context (from data.js) and answers questions based on the resume and projects. Secured via client-side sessionStorage input.
 - **Files Affected:** `index.html`, `script.js`, `styles.css`
+
+## 2026-08-24 11:58:00
+- **Description:** Iteration 6: Ingested new certificates via update_data.py. Implemented a dynamic top scroll progress bar tracking user scroll position for an extra premium touch.
+- **Files Affected:** `index.html`, `script.js`, `styles.css`

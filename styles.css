@@ -9,6 +9,17 @@
     --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(to right, var(--accent), #8b5cf6);
+    z-index: 1000;
+    transition: width 0.1s ease;
+}
+
 * {
     margin: 0;
     padding: 0;
