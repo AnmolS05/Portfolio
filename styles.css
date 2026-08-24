@@ -52,11 +52,23 @@ body {
     font-family: 'Outfit', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    background-image: radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.1), transparent 25%),
-                      radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.1), transparent 25%);
-    background-attachment: fixed;
     min-height: 100vh;
     overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+    z-index: -2;
+    pointer-events: none;
 }
 
 h1, h2, h3 {
