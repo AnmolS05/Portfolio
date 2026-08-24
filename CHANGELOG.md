@@ -119,3 +119,7 @@
 ## 2026-08-24 12:46:00
 - **Description:** Iteration 30: Ingested new certificates via update_data.py. Added an elegant Active Section Indicator to the sidebar navigation. When you scroll through the page, an animated accent-colored dot appears next to the currently active section in the sidebar, providing highly professional visual feedback on your current reading position.
 - **Files Affected:** `styles.css`
+
+## 2026-08-24 12:48:00
+- **Description:** Iteration 31: Ingested new certificates via update_data.py. Added Animated Gradient Underlines to Section Titles. When scrolling into a new section, the main title ('About', 'Projects', etc.) now features a sleek gradient underline that dynamically grows in width, adding a satisfying micro-animation to the reading experience.
+- **Files Affected:** `styles.css`
