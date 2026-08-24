@@ -111,3 +111,7 @@
 ## 2026-08-24 12:42:00
 - **Description:** Iteration 28: Ingested new certificates via update_data.py. Enabled Native CSS Smooth Scrolling globally. Clicking sidebar navigation links now smoothly animates the page scrolling down to the target section instead of instantly jumping, delivering a much more premium single-page application experience.
 - **Files Affected:** `styles.css`
+
+## 2026-08-24 12:44:00
+- **Description:** Iteration 29: Ingested new certificates via update_data.py. Added a Staggered Cascade Animation to the Project and Certificate grids. Now, when scrolling down to reveal these sections, the cards dynamically fade and slide up one by one in a seamless wave, rather than all appearing simultaneously.
+- **Files Affected:** `script.js`

@@ -293,9 +293,10 @@ function loadProjects(projects) {
         return;
     }
 
-    projects.forEach(proj => {
+    projects.forEach((proj, index) => {
         const card = document.createElement('div');
         card.className = 'card tilt-card fade-in-up';
+        card.style.transitionDelay = `${index * 0.1}s`;
         card.innerHTML = `
             <div class="glare"></div>
             <h3>${formatName(proj.name)}</h3>
@@ -318,9 +319,10 @@ function loadCertificates(certs) {
         return;
     }
 
-    certs.forEach(cert => {
+    certs.forEach((cert, index) => {
         const card = document.createElement('div');
         card.className = 'card tilt-card fade-in-up';
+        card.style.transitionDelay = `${index * 0.1}s`;
         card.onclick = () => window.open(cert.path, '_blank');
         card.innerHTML = `
             <div class="glare"></div>
