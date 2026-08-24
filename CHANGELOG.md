@@ -143,3 +143,7 @@
 ## 2026-08-24 12:58:00
 - **Description:** Iteration 36: Ingested new certificates via update_data.py. Added a Floating 'Scroll To Top' button. This highly functional UI element appears only when you scroll deep into the page. Clicking it smoothly glides the user back to the top of the portfolio, ensuring they never feel 'lost' at the bottom of long lists.
 - **Files Affected:** `index.html`, `styles.css`, `script.js`
+
+## 2026-08-24 13:00:00
+- **Description:** Iteration 37: Ingested new certificates via update_data.py. Added a 'Magnetic Physics' effect to the primary Call-To-Action buttons (like the Resume download button). When the user's cursor approaches the button, the button subtly pulls towards the cursor, giving the interface a highly satisfying, tactile sense of weight and physical presence.
+- **Files Affected:** `script.js`

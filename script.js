@@ -256,8 +256,8 @@ document.querySelectorAll('a, button, .card').forEach(el => {
     el.addEventListener('mouseleave', () => customCursor?.classList.remove('hovering'));
 });
 
-// Magnetic Links
-document.querySelectorAll('.nav-link').forEach(link => {
+// Magnetic Links & Buttons
+document.querySelectorAll('.nav-link, .btn-primary').forEach(link => {
     link.addEventListener('mousemove', e => {
         const rect = link.getBoundingClientRect();
         const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
