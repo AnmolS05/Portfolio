@@ -362,11 +362,37 @@ h1, h2, h3 {
 .btn-primary {
     background: var(--accent);
     color: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg, var(--accent), #8b5cf6, var(--accent));
+    background-size: 200% 200%;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
 }
 
 .btn-primary:hover {
-    background: var(--accent-hover);
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-primary:hover::before {
+    opacity: 1;
+    animation: gradientShift 2s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Main Content */
