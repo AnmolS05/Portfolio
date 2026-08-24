@@ -75,9 +75,9 @@ def main():
             subprocess.run(["git", "remote", "add", "origin", "https://github.com/AnmolS05/Portfolio.git"], cwd=PORTFOLIO_DIR, check=False)
             
         subprocess.run(["git", "add", "."], cwd=PORTFOLIO_DIR, check=True)
-        # Commit will fail if no changes, so we ignore error
         subprocess.run(["git", "commit", "-m", "Automated iteration update"], cwd=PORTFOLIO_DIR, check=False)
-        subprocess.run(["git", "push", "-u", "origin", "master"], cwd=PORTFOLIO_DIR, check=False)
+        subprocess.run(["git", "branch", "-M", "main"], cwd=PORTFOLIO_DIR, check=False)
+        subprocess.run(["git", "push", "-u", "origin", "main"], cwd=PORTFOLIO_DIR, check=False)
         print("Git sync complete.")
     except Exception as e:
         print(f"Git sync failed: {e}")
