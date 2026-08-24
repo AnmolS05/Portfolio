@@ -171,3 +171,7 @@
 ## 2026-08-24 13:14:00
 - **Description:** Iteration 44: Ingested new certificates via update_data.py. Added a Custom Hover Tooltip system for your Technology Tags. When a user hovers over a language/framework badge on a project card (e.g. 'React' or 'Python'), a sleek glassmorphic tooltip instantly pops up and physically follows the cursor, reading 'Built with [Tech]'. This provides delightful micro-context without cluttering the UI.
 - **Files Affected:** `index.html`, `styles.css`, `script.js`
+
+## 2026-08-24 13:16:00
+- **Description:** Iteration 45: Ingested new certificates via update_data.py. Implemented a '3D Hover Tilt' on all Project and Certificate cards. Previously, cards simply slid upwards on hover. Now, using a bit of trigonometry mapping the mouse position, they dynamically tilt along their X and Y axes toward the cursor. This provides an incredible sense of depth and physics, making the UI feel like tactile, premium glass surfaces.
+- **Files Affected:** `script.js`

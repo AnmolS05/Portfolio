@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Chatbot Initialization
     initChatbot();
+
+    // 3D Tilt Effect
+    initTiltEffect();
 });
 
 function setDynamicGreeting() {
@@ -406,6 +409,8 @@ function loadProjects(projects) {
             });
         });
     }
+    
+
     
     // Update section title with count
     const title = document.querySelector('#projects .section-title');
