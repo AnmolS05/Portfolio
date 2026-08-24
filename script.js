@@ -386,6 +386,27 @@ function loadProjects(projects) {
         observer.observe(card);
     });
     
+    // Add Tooltip logic for tags
+    const tooltip = document.getElementById('custom-tooltip');
+    if (tooltip) {
+        document.querySelectorAll('.tags span').forEach(tag => {
+            tag.addEventListener('mouseenter', (e) => {
+                const techName = e.target.innerText;
+                tooltip.innerText = `Built with ${techName}`;
+                tooltip.style.opacity = '1';
+                tooltip.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 150%)) scale(1.1)`;
+            });
+            tag.addEventListener('mousemove', (e) => {
+                tooltip.style.left = e.clientX + 'px';
+                tooltip.style.top = e.clientY + 'px';
+            });
+            tag.addEventListener('mouseleave', () => {
+                tooltip.style.opacity = '0';
+                tooltip.style.transform = `translate(-50%, -150%) scale(1)`;
+            });
+        });
+    }
+    
     // Update section title with count
     const title = document.querySelector('#projects .section-title');
     if (title && !title.innerText.includes('(')) {

@@ -20,6 +20,24 @@
     transition: width 0.1s ease;
 }
 
+#custom-tooltip {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translate(-50%, -150%);
+}
+
 #custom-cursor {
     position: fixed;
     width: 40px;
