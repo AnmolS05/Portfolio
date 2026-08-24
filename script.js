@@ -323,16 +323,44 @@ document.querySelectorAll('.nav-link, .btn-primary').forEach(link => {
 });
 
 // Typewriter Logic
-const textToType = "Software Developer & Innovator";
-let typeIndex = 0;
+const taglines = [
+    "Software Developer & Innovator",
+    "Full-Stack Engineer",
+    "Applied AI Enthusiast",
+    "Geospatial Data Visualizer"
+];
+let taglineIndex = 0;
+let charIndex = 0;
+let isDeletingTagline = false;
+
 function typeWriter() {
-    if (typeIndex < textToType.length) {
-        document.getElementById("tagline-text").innerHTML += textToType.charAt(typeIndex);
-        typeIndex++;
-        setTimeout(typeWriter, 100);
+    const currentTagline = taglines[taglineIndex];
+    const taglineElement = document.getElementById("tagline-text");
+    
+    if (taglineElement) {
+        if (isDeletingTagline) {
+            taglineElement.innerHTML = currentTagline.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            taglineElement.innerHTML = currentTagline.substring(0, charIndex + 1);
+            charIndex++;
+        }
+        
+        let typeSpeed = isDeletingTagline ? 50 : 100;
+        
+        if (!isDeletingTagline && charIndex === currentTagline.length) {
+            typeSpeed = 2000; // Pause at the end of the word
+            isDeletingTagline = true;
+        } else if (isDeletingTagline && charIndex === 0) {
+            isDeletingTagline = false;
+            taglineIndex = (taglineIndex + 1) % taglines.length;
+            typeSpeed = 500; // Pause before typing next word
+        }
+        
+        setTimeout(typeWriter, typeSpeed);
     }
 }
-window.onload = typeWriter;
+// Remove window.onload since typeWriter is called in DOMContentLoaded
 
 // Scroll Animation Observer
 const observerOptions = {

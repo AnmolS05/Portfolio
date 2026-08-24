@@ -175,3 +175,7 @@
 ## 2026-08-24 13:16:00
 - **Description:** Iteration 45: Ingested new certificates via update_data.py. Implemented a '3D Hover Tilt' on all Project and Certificate cards. Previously, cards simply slid upwards on hover. Now, using a bit of trigonometry mapping the mouse position, they dynamically tilt along their X and Y axes toward the cursor. This provides an incredible sense of depth and physics, making the UI feel like tactile, premium glass surfaces.
 - **Files Affected:** `script.js`
+
+## 2026-08-24 13:18:00
+- **Description:** Iteration 46: Ingested new certificates via update_data.py. Upgraded the Profile Tagline 'Typewriter Effect'. Instead of just typing out 'Software Developer & Innovator' once and stopping, it now infinitely cycles through a dynamic list of your roles (Full-Stack Engineer, Applied AI Enthusiast, Geospatial Data Visualizer). It smoothly types, pauses, erases itself, and types the next phrase. I also added a realistic blinking cursor to complete the terminal aesthetic.
+- **Files Affected:** `styles.css`, `script.js`
