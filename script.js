@@ -317,6 +317,7 @@ function loadProjects(projects) {
                     return `<span style="color: ${color}; background: ${bg}; border: 1px solid ${color}40">${t}</span>`;
                 }).join('')}
             </div>
+            <div class="hover-reveal"><span>View Project &rarr;</span></div>
         `;
         container.appendChild(card);
         observer.observe(card);
@@ -346,8 +347,9 @@ function loadCertificates(certs) {
         card.innerHTML = `
             <div class="glare"></div>
             <h3>${cert.name}</h3>
-            <p>Click to view certificate.</p>
             <span class="cert-type">${cert.type}</span>
+            <br>
+            <div class="hover-reveal"><span>View Document &rarr;</span></div>
         `;
         container.appendChild(card);
         observer.observe(card);

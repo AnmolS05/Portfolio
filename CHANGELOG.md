@@ -131,3 +131,7 @@
 ## 2026-08-24 12:51:00
 - **Description:** Iteration 32: Ingested new certificates via update_data.py. Added Dynamic Badges to Section Titles. The 'Projects' and 'Certificates' section headers now dynamically read the JSON data to automatically append a numerical count of your achievements (e.g. 'Projects (8)'). This provides immediate context for visitors before they even begin scrolling.
 - **Files Affected:** `script.js`
+
+## 2026-08-24 12:54:00
+- **Description:** Iteration 34: Ingested new certificates via update_data.py. Added an elegant 'Hover Reveal' micro-interaction to all cards. When you hover over a Project or Certificate, a sleek, accent-colored 'View Project / View Document' call-to-action seamlessly slides up and fades into view, providing a clean, distraction-free default state while remaining highly interactive.
+- **Files Affected:** `styles.css`, `script.js`

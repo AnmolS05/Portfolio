@@ -535,6 +535,22 @@ h1, h2, h3 {
     line-height: 1.5;
 }
 
+.hover-reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+.card:hover .hover-reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
