@@ -27,9 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Typewriter effect
     typeWriter();
 
+    // Dynamic Greeting
+    setDynamicGreeting();
+
     // Chatbot Initialization
     initChatbot();
 });
+
+function setDynamicGreeting() {
+    const welcomeTitle = document.getElementById('welcome-title');
+    if (welcomeTitle) {
+        const hour = new Date().getHours();
+        let greeting = 'Good evening';
+        if (hour < 12) greeting = 'Good morning';
+        else if (hour < 18) greeting = 'Good afternoon';
+        
+        welcomeTitle.innerText = `${greeting}. Welcome to my universe.`;
+    }
+}
 
 // Chatbot Logic
 function initChatbot() {
