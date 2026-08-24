@@ -43,3 +43,7 @@
 ## 2026-08-24 12:08:00
 - **Description:** Iteration 11: Ingested new certificates via update_data.py. Added an interactive 3D glare/glint effect to the project and certificate cards. The reflection dynamically moves based on the cursor position over the card.
 - **Files Affected:** `script.js`, `styles.css`
+
+## 2026-08-24 12:10:00
+- **Description:** Iteration 12: Ingested new certificates via update_data.py. Added an interactive custom 'magic cursor' that replaces the default pointer. It smoothly trails the mouse and expands with a blend-mode effect when hovering over interactive elements like cards and buttons.
+- **Files Affected:** `index.html`, `script.js`, `styles.css`

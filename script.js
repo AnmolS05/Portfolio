@@ -144,8 +144,15 @@ window.addEventListener('scroll', () => {
     document.getElementById('scroll-progress').style.width = scrolled + "%";
 });
 
-// Interactive Glass Glow
+// Interactive Glass Glow & Cursor
+const customCursor = document.getElementById('custom-cursor');
 document.addEventListener('mousemove', e => {
+    // Magic cursor logic
+    if (customCursor) {
+        customCursor.style.left = e.clientX + 'px';
+        customCursor.style.top = e.clientY + 'px';
+    }
+
     document.querySelectorAll('.glass-panel, .card').forEach(panel => {
         const rect = panel.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -153,6 +160,12 @@ document.addEventListener('mousemove', e => {
         panel.style.setProperty('--mouse-x', `${x}px`);
         panel.style.setProperty('--mouse-y', `${y}px`);
     });
+});
+
+// Cursor Hover Effects
+document.querySelectorAll('a, button, .card').forEach(el => {
+    el.addEventListener('mouseenter', () => customCursor?.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => customCursor?.classList.remove('hovering'));
 });
 
 // Typewriter Logic
