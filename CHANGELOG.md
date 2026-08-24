@@ -135,3 +135,7 @@
 ## 2026-08-24 12:54:00
 - **Description:** Iteration 34: Ingested new certificates via update_data.py. Added an elegant 'Hover Reveal' micro-interaction to all cards. When you hover over a Project or Certificate, a sleek, accent-colored 'View Project / View Document' call-to-action seamlessly slides up and fades into view, providing a clean, distraction-free default state while remaining highly interactive.
 - **Files Affected:** `styles.css`, `script.js`
+
+## 2026-08-24 12:56:00
+- **Description:** Iteration 35: Ingested new certificates via update_data.py. Upgraded the Ambient Background Shapes. The glowing glassmorphism orbs in the background no longer just float linearly; they now slowly swirl, rotate, and pulsate in size, giving the entire portfolio a feeling of deep, ambient life.
+- **Files Affected:** `styles.css`
