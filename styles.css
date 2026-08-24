@@ -260,6 +260,13 @@ h1, h2, h3 {
     justify-content: center;
     cursor: pointer;
     text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    margin: 0 auto 1rem auto;
+}
+
+.avatar:hover {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
 }
 
 .fade-in-up {
