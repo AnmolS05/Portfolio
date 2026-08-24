@@ -28,7 +28,93 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Typewriter effect
     typeWriter();
+
+    // Chatbot Initialization
+    initChatbot();
 });
+
+// Chatbot Logic
+function initChatbot() {
+    const toggleBtn = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const apiKeyScreen = document.getElementById('api-key-screen');
+    const chatScreen = document.getElementById('chat-screen');
+    const apiKeyInput = document.getElementById('api-key-input');
+    const saveKeyBtn = document.getElementById('save-key-btn');
+    const chatInput = document.getElementById('chat-input');
+    const sendMsgBtn = document.getElementById('send-msg-btn');
+    const chatHistory = document.getElementById('chat-history');
+
+    toggleBtn.addEventListener('click', () => {
+        chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+        checkApiKey();
+    });
+
+    function checkApiKey() {
+        if (sessionStorage.getItem('gemini_api_key')) {
+            apiKeyScreen.style.display = 'none';
+            chatScreen.style.display = 'flex';
+        } else {
+            apiKeyScreen.style.display = 'flex';
+            chatScreen.style.display = 'none';
+        }
+    }
+
+    saveKeyBtn.addEventListener('click', () => {
+        const key = apiKeyInput.value.trim();
+        if (key) {
+            sessionStorage.setItem('gemini_api_key', key);
+            checkApiKey();
+            addMessage("Hi there! I'm an AI assistant based on Anmol's portfolio. Ask me anything about his projects, skills, or experience!", 'ai');
+        }
+    });
+
+    async function handleSend() {
+        const msg = chatInput.value.trim();
+        if (!msg) return;
+
+        addMessage(msg, 'user');
+        chatInput.value = '';
+
+        const apiKey = sessionStorage.getItem('gemini_api_key');
+        if (!apiKey) return;
+
+        try {
+            const sysContext = "You are an AI representing Anmol S Poojary. Answer questions based on this data: " + JSON.stringify(portfolioData) + ". Keep answers brief, professional, and friendly.";
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: sysContext + "\nUser question: " + msg }] }]
+                })
+            });
+            const data = await response.json();
+            
+            if (data.error) {
+                addMessage("Error: " + data.error.message, 'ai');
+                return;
+            }
+
+            const aiText = data.candidates[0].content.parts[0].text;
+            addMessage(aiText, 'ai');
+        } catch (error) {
+            addMessage("Sorry, I encountered an error connecting to the API.", 'ai');
+        }
+    }
+
+    sendMsgBtn.addEventListener('click', handleSend);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSend();
+    });
+
+    function addMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `chat-message ${sender}`;
+        msgDiv.innerText = text;
+        chatHistory.appendChild(msgDiv);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+}
 
 // Typewriter Logic
 const textToType = "Software Developer & Innovator";

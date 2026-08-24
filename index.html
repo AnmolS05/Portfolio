@@ -8,6 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
     <div class="layout">
         <aside class="sidebar glass-panel">
             <div class="sidebar-content">
@@ -76,6 +81,31 @@
                 </div>
             </section>
         </main>
+    </div>
+
+    <div class="chat-widget">
+        <button id="chat-toggle" class="btn btn-primary" style="border-radius: 50%; width: 60px; height: 60px; font-size: 24px; display: flex; align-items: center; justify-content: center; box-shadow: var(--glass-shadow); z-index: 100; position: fixed; bottom: 2rem; right: 2rem;">💬</button>
+        <div id="chat-window" class="glass-panel" style="display: none; position: fixed; bottom: 6rem; right: 2rem; width: 350px; height: 500px; z-index: 100; border-radius: 16px; flex-direction: column; overflow: hidden;">
+            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-bottom: 1px solid var(--glass-border);">
+                <h3 style="margin: 0;">AI Anmol</h3>
+            </div>
+            
+            <div id="api-key-screen" style="padding: 2rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
+                <p style="margin-bottom: 1rem; color: var(--text-muted);">Enter Gemini API Key to chat</p>
+                <input type="password" id="api-key-input" style="padding: 0.5rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2); color: white; width: 100%;">
+                <button id="save-key-btn" class="btn btn-primary">Save & Start</button>
+            </div>
+
+            <div id="chat-screen" style="display: none; flex-direction: column; height: 100%;">
+                <div id="chat-history" style="flex-grow: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <!-- Messages go here -->
+                </div>
+                <div style="padding: 1rem; border-top: 1px solid var(--glass-border); display: flex; gap: 0.5rem;">
+                    <input type="text" id="chat-input" placeholder="Ask me anything..." style="flex-grow: 1; padding: 0.5rem; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2); color: white;">
+                    <button id="send-msg-btn" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Data provided by python script -->
