@@ -63,3 +63,7 @@
 ## 2026-08-24 12:18:00
 - **Description:** Iteration 16: Ingested new certificates via update_data.py. Added a staggered CSS keyframe load sequence to the sidebar (Avatar -> Title -> Tagline -> Nav Links), causing elements to smoothly cascade into view when the page first loads.
 - **Files Affected:** `styles.css`
+
+## 2026-08-24 12:20:00
+- **Description:** Iteration 17: Ingested new certificates via update_data.py. Implemented a Scroll Spy feature. The sidebar navigation links now dynamically update their active state based on the user's scroll position, providing clear feedback on exactly which section is currently being viewed.
+- **Files Affected:** `script.js`

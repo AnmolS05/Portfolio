@@ -136,12 +136,30 @@ function initChatbot() {
     }
 }
 
-// Scroll Progress Logic
+// Scroll Progress & Spy Logic
 window.addEventListener('scroll', () => {
+    // Progress Bar
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (winScroll / height) * 100;
     document.getElementById('scroll-progress').style.width = scrolled + "%";
+
+    // Scroll Spy
+    let currentSection = '';
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => {
+        const sectionTop = sec.offsetTop;
+        if (winScroll >= sectionTop - 150) {
+            currentSection = sec.getAttribute('id');
+        }
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(currentSection)) {
+            link.classList.add('active');
+        }
+    });
 });
 
 // Interactive Glass Glow & Cursor
