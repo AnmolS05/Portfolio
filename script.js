@@ -302,7 +302,20 @@ function loadProjects(projects) {
             <h3>${formatName(proj.name)}</h3>
             <p>${proj.description}</p>
             <div class="tags">
-                ${proj.technologies.slice(0,3).map(t => `<span>${t}</span>`).join('')}
+                ${proj.technologies.slice(0,3).map(t => {
+                    const tech = t.toLowerCase();
+                    let color = '#fff';
+                    let bg = 'rgba(255,255,255,0.1)';
+                    if (tech.includes('react')) { color = '#61dafb'; bg = 'rgba(97,218,251,0.1)'; }
+                    else if (tech.includes('python')) { color = '#ffdf76'; bg = 'rgba(255,223,118,0.1)'; }
+                    else if (tech.includes('node')) { color = '#68a063'; bg = 'rgba(104,160,99,0.1)'; }
+                    else if (tech.includes('js') || tech.includes('javascript')) { color = '#f7df1e'; bg = 'rgba(247,223,30,0.1)'; }
+                    else if (tech.includes('css')) { color = '#264de4'; bg = 'rgba(38,77,228,0.1)'; }
+                    else if (tech.includes('html')) { color = '#e34c26'; bg = 'rgba(227,76,38,0.1)'; }
+                    else if (tech.includes('next')) { color = '#000000'; bg = 'rgba(255,255,255,0.8)'; }
+                    
+                    return `<span style="color: ${color}; background: ${bg}; border: 1px solid ${color}40">${t}</span>`;
+                }).join('')}
             </div>
         `;
         container.appendChild(card);
