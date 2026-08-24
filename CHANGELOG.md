@@ -31,3 +31,7 @@
 ## 2026-08-24 12:02:00
 - **Description:** Iteration 8: Refactored update_data.py to properly map and clean raw certificate file names into professional display titles. Added a pulsing neon glow animation to the avatar in the sidebar.
 - **Files Affected:** `update_data.py`, `script.js`, `styles.css`
+
+## 2026-08-24 12:04:00
+- **Description:** Iteration 9: Ingested new certificates via update_data.py. Added an animated bouncing-dot typing indicator to the AI Chatbot to provide immediate visual feedback while awaiting the Gemini API response.
+- **Files Affected:** `script.js`, `styles.css`

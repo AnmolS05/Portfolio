@@ -79,6 +79,9 @@ function initChatbot() {
         const apiKey = sessionStorage.getItem('gemini_api_key');
         if (!apiKey) return;
 
+        const typingId = "typing-" + Date.now();
+        addTypingIndicator(typingId);
+
         try {
             const sysContext = "You are an AI representing Anmol S Poojary. Answer questions based on this data: " + JSON.stringify(portfolioData) + ". Keep answers brief, professional, and friendly.";
             const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
@@ -90,6 +93,8 @@ function initChatbot() {
             });
             const data = await response.json();
             
+            removeTypingIndicator(typingId);
+            
             if (data.error) {
                 addMessage("Error: " + data.error.message, 'ai');
                 return;
@@ -98,6 +103,7 @@ function initChatbot() {
             const aiText = data.candidates[0].content.parts[0].text;
             addMessage(aiText, 'ai');
         } catch (error) {
+            removeTypingIndicator(typingId);
             addMessage("Sorry, I encountered an error connecting to the API.", 'ai');
         }
     }
@@ -113,6 +119,20 @@ function initChatbot() {
         msgDiv.innerText = text;
         chatHistory.appendChild(msgDiv);
         chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function addTypingIndicator(id) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `chat-message ai`;
+        msgDiv.id = id;
+        msgDiv.innerHTML = `<div class="typing-indicator"><span></span><span></span><span></span></div>`;
+        chatHistory.appendChild(msgDiv);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function removeTypingIndicator(id) {
+        const el = document.getElementById(id);
+        if (el) el.remove();
     }
 }
 
