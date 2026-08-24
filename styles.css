@@ -444,6 +444,35 @@ h1, h2, h3 {
     margin-top: 2rem;
 }
 
+.tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.tags span {
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.tags span:hover {
+    background: rgba(139, 92, 246, 0.3);
+    color: #fff;
+    border-color: rgba(139, 92, 246, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
+
 .info-card {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--glass-border);

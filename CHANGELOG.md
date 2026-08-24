@@ -71,3 +71,7 @@
 ## 2026-08-24 12:22:00
 - **Description:** Iteration 18: Ingested new certificates via update_data.py. Added a highly aesthetic, tech-inspired background grid pattern. The grid uses a radial gradient mask so it elegantly fades out towards the edges of the screen, anchoring the glassmorphism elements perfectly.
 - **Files Affected:** `styles.css`
+
+## 2026-08-24 12:24:00
+- **Description:** Iteration 19: Ingested new certificates via update_data.py. Overhauled the project technology tags with a vibrant 'frosted glass pill' design. They now feature a subtle translucent background with an interactive hover state that gently lifts the tag and applies a neon drop-shadow.
+- **Files Affected:** `styles.css`
