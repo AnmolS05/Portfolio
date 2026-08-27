@@ -43,25 +43,25 @@ const portfolioData = {
             "type": "pdf"
         },
         {
-            "name": "Technical Achievement Certificate 1",
+            "name": "Microsoft AI Innovation Certificate 1",
             "filename": "WhatsApp Image 2026-08-19 at 10.57.59 (1).jpeg",
             "path": "cer/WhatsApp Image 2026-08-19 at 10.57.59 (1).jpeg",
             "type": "jpeg"
         },
         {
-            "name": "Technical Achievement Certificate 2",
+            "name": "Microsoft AI Innovation Certificate 2",
             "filename": "WhatsApp Image 2026-08-19 at 10.57.59 (2).jpeg",
             "path": "cer/WhatsApp Image 2026-08-19 at 10.57.59 (2).jpeg",
             "type": "jpeg"
         },
         {
-            "name": "Technical Achievement Certificate 3",
+            "name": "Microsoft AI Innovation Certificate 3",
             "filename": "WhatsApp Image 2026-08-19 at 10.57.59.jpeg",
             "path": "cer/WhatsApp Image 2026-08-19 at 10.57.59.jpeg",
             "type": "jpeg"
         },
         {
-            "name": "Technical Achievement Certificate 4",
+            "name": "Microsoft AI Innovation Certificate 4",
             "filename": "WhatsApp Image 2026-08-19 at 11.34.22.jpeg",
             "path": "cer/WhatsApp Image 2026-08-19 at 11.34.22.jpeg",
             "type": "jpeg"
