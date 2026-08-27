@@ -386,3 +386,9 @@
 - The lens sits behind the main content (mix-blend-mode: screen) and softly illuminates the background neon grid and particles.
 - The mouse coordinates are updated globally in JS and mapped natively to CSS radial gradients, creating an interactive lighting engine without performance drops.
 
+
+### Iteration 15: Kinetic Scroll Velocity Skewing
+- Bound the scroll velocity exposed by Lenis to GSAP skewY animations on the project and certificate grids.
+- Now, when you scroll rapidly, the entire UI dynamically bends and stretches under 'air resistance' before snapping back into place.
+- Adds an incredibly fluid, bouncy, tactile momentum to navigation.
+

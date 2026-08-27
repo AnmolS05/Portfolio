@@ -49,8 +49,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 ScrollTrigger.update(e);
                 // Kinetic RGB Split effect based on velocity
                 const velocity = e.velocity || 0;
-                const intensity = Math.min(Math.abs(velocity) * 0.4, 8); // clamp intensity
-                document.documentElement.style.setProperty('--scroll-velocity', `${intensity}px`);
+                const absVelocity = Math.abs(velocity);
+                const rgbOffset = Math.min(absVelocity * 0.5, 10);
+                document.documentElement.style.setProperty('--scroll-rgb-offset', `${rgbOffset}px`);
+                
+                // Kinetic Scroll Skewing: entire grids bend under air resistance
+                const skewAmount = Math.max(-4, Math.min(4, velocity * 0.15));
+                if (typeof gsap !== 'undefined') {
+                    gsap.to('.project-grid, .cert-grid', {
+                        skewY: skewAmount,
+                        duration: 0.2,
+                        ease: 'power1.out',
+                        overwrite: 'auto'
+                    });
+                }
             });
             gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
             gsap.ticker.lagSmoothing(0);
