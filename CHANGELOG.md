@@ -339,3 +339,9 @@
 - Implemented 'Magnetic' physics on sidebar navigation links using GSAP.
 - Links now physically stretch and pull towards the user's cursor when hovered, creating an ultra-premium, tactile feel.
 
+
+### Iteration 7: Kinetic Chromatic Aberration
+- Tied Lenis scroll velocity to a CSS variable via JS.
+- Added dynamic CSS drop-shadow/text-shadow to all headings (h1, h2, h3).
+- Text and cards now dynamically split into red and cyan channels (RGB split / chromatic aberration) when the user scrolls fast, giving a kinetic cyberpunk feel.
+

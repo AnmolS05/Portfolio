@@ -14,7 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(raf);
         
         if (typeof ScrollTrigger !== 'undefined') {
-            lenis.on('scroll', ScrollTrigger.update);
+            lenis.on('scroll', (e) => {
+                ScrollTrigger.update(e);
+                // Kinetic RGB Split effect based on velocity
+                const velocity = e.velocity || 0;
+                const intensity = Math.min(Math.abs(velocity) * 0.4, 8); // clamp intensity
+                document.documentElement.style.setProperty('--scroll-velocity', `${intensity}px`);
+            });
             gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
             gsap.ticker.lagSmoothing(0);
         }

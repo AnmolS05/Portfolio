@@ -1622,3 +1622,17 @@ a, button, .card {
 }
 
 // Removed glitch-reveal CSS to fix GSAP conflict
+
+
+/* Kinetic RGB Split Effect */
+:root {
+    --scroll-velocity: 0px;
+}
+
+h1, h2, h3, .section-title, .glitch-text {
+    text-shadow: 
+        calc(var(--scroll-velocity) * 1) 0 0 rgba(255, 0, 85, 0.8),
+        calc(var(--scroll-velocity) * -1) 0 0 rgba(0, 229, 255, 0.8);
+    transition: text-shadow 0.05s linear;
+}
+
