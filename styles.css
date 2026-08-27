@@ -1678,3 +1678,21 @@ body, a, button, .card, .nav-link { cursor: none !important; }
     mix-blend-mode: screen;
 }
 
+
+
+/* 3D Content Parallax inside Vanilla Tilt Cards */
+.card > * {
+    transform: translateZ(30px);
+    transition: transform 0.4s ease-out;
+}
+.card:hover > h3, .card:hover > h4 {
+    transform: translateZ(60px);
+    text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+.card:hover > p {
+    transform: translateZ(40px);
+}
+.card:hover > .tags, .card:hover > .tech-stack {
+    transform: translateZ(50px);
+}
+

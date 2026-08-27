@@ -363,3 +363,8 @@
 - Whenever the user clicks anywhere, 12 neon glowing particles burst out with independent vectors, fake gravity, and scale animations.
 - Combined with the WebGL shader shockwave and the new Audio API SFX, clicking now feels insanely tactile and satisfying.
 
+
+### Iteration 11: Holographic 3D Content Parallax
+- Upgraded Vanilla Tilt cards by applying translateZ parallax to all child elements.
+- Content (titles, descriptions, tags) now physically 'pops out' of the cards in 3D space when tilted or hovered, completing the WebGL/3D illusion.
+
