@@ -721,19 +721,31 @@ function initGSAPAnimations() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Section titles — slide in from left with underline draw and scramble
+    // Section titles - Cinematic 3D Letter Reveal
     gsap.utils.toArray('.section-title').forEach(title => {
-        gsap.from(title, {
-            x: -60,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power3.out',
+        // Split text into spans for letter-by-letter animation
+        const text = title.innerText;
+        title.innerHTML = '';
+        const chars = text.split('');
+        chars.forEach(char => {
+            const span = document.createElement('span');
+            span.innerText = char === ' ' ? '\u00A0' : char;
+            span.style.display = 'inline-block';
+            title.appendChild(span);
+        });
+        
+        gsap.from(title.children, {
             scrollTrigger: {
                 trigger: title,
                 start: 'top 85%',
-                toggleActions: 'play none none none',
-                onEnter: () => scrambleText(title)
-            }
+                toggleActions: 'play none none none'
+            },
+            y: 50,
+            opacity: 0,
+            rotationX: -90,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'back.out(1.7)'
         });
     });
 

@@ -404,3 +404,9 @@
 - The grid floor sits at the bottom of the 3D scene and continuously scrolls forward in the render loop, creating the illusion of infinite forward momentum through cyberspace.
 - This completes the legendary synthwave/outrun aesthetic, anchoring the floating 3D shapes to a recognizable horizon line.
 
+
+### Iteration 18: Cinematic 3D Letter Reveal for Section Titles
+- Replaced the basic slide-in animation for section headers with an advanced GSAP SplitText simulation.
+- As you scroll down the page, section titles ('Projects', 'Certificates') now physically unfold letter-by-letter in 3D space (otationX), staggering perfectly.
+- It drastically elevates the production value and gives a futuristic, highly engineered feel to the layout's typography.
+
