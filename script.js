@@ -53,6 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rgbOffset = Math.min(absVelocity * 0.5, 10);
                 document.documentElement.style.setProperty('--scroll-rgb-offset', `${rgbOffset}px`);
                 
+                // Play cinematic scroll wind/whoosh sound if fast enough
+                if (typeof playScrollWhoosh === 'function') {
+                    playScrollWhoosh(velocity);
+                }
+                
                 // Kinetic Scroll Skewing: entire grids bend under air resistance
                 const skewAmount = Math.max(-4, Math.min(4, velocity * 0.15));
                 if (typeof gsap !== 'undefined') {
@@ -133,6 +138,48 @@ document.addEventListener('DOMContentLoaded', () => {
         
         osc.start();
         osc.stop(audioCtx.currentTime + 0.1);
+    }
+
+    // Cinematic scroll whoosh based on scroll velocity
+    let lastWhooshTime = 0;
+    function playScrollWhoosh(velocity) {
+        if (!audioCtx) return;
+        const absVel = Math.abs(velocity);
+        if (absVel < 15) return; // Only whoosh on fast scrolls
+        
+        const now = audioCtx.currentTime;
+        if (now - lastWhooshTime < 0.3) return; // throttle whooshes
+        lastWhooshTime = now;
+        
+        const bufferSize = audioCtx.sampleRate * 0.5; // 0.5 seconds
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            data[i] = Math.random() * 2 - 1; // White noise
+        }
+        
+        const noiseSource = audioCtx.createBufferSource();
+        noiseSource.buffer = buffer;
+        
+        // Lowpass filter to muffle it like deep wind
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = Math.min(400 + absVel * 20, 2000);
+        
+        const gain = audioCtx.createGain();
+        gain.gain.setValueAtTime(0, now);
+        
+        // Scale volume with velocity
+        const maxVol = Math.min(absVel * 0.0005, 0.03);
+        gain.gain.linearRampToValueAtTime(maxVol, now + 0.1);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+        
+        noiseSource.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        noiseSource.start(now);
+        noiseSource.stop(now + 0.5);
     }
 
     // Attach SFX to all interactive elements, and init audio on first interaction (required by browsers)

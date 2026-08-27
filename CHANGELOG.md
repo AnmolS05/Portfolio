@@ -416,3 +416,9 @@
 - As you scroll down the page, the entire color palette of the site (glows, text strokes, grids, and Three.js materials) slowly hue-shifts from Cyan/Purple to Magenta/Orange.
 - This creates a massive, immersive ambient environment change as you move through the portfolio, making the page feel alive.
 
+
+### Iteration 21: Cinematic Scroll Whoosh SFX
+- Leveraged the Web Audio API to synthesize procedural white noise shaped by an exponential volume envelope and a dynamic low-pass filter.
+- The volume and filter cutoff frequency of the 'wind' are directly mapped to the Lenis scroll velocity (e.velocity).
+- Scrolling rapidly now produces a cinematic 'whoosh' sound effect, adding intense kinetic audio feedback to the physical scroll motion.
+
