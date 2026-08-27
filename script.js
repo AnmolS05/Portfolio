@@ -439,6 +439,10 @@ document.addEventListener('mousemove', e => {
         customCursor.style.left = e.clientX + 'px';
         customCursor.style.top = e.clientY + 'px';
     }
+    
+    // Global mouse variables for CSS cursor lens spotlight
+    document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+    document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
 
     // Parallax background shapes
     const x = e.clientX / window.innerWidth;

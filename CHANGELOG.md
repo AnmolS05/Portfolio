@@ -380,3 +380,9 @@
 - Wedged perfectly between the WebGL nebula (z-index -2) and the glass panels (z-index 1).
 - The marquee gives the site an unmistakable 'premium agency' aesthetic and deepens the sense of 3D layering.
 
+
+### Iteration 14: Dynamic Cursor Lens Spotlight
+- Created a massive radial gradient lens that follows the cursor across the entire viewport.
+- The lens sits behind the main content (mix-blend-mode: screen) and softly illuminates the background neon grid and particles.
+- The mouse coordinates are updated globally in JS and mapped natively to CSS radial gradients, creating an interactive lighting engine without performance drops.
+

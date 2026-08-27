@@ -1724,3 +1724,16 @@ body, a, button, .card, .nav-link { cursor: none !important; }
     to { transform: translateX(-33.33%); }
 }
 
+
+
+/* Dynamic Global Cursor Lens */
+.cursor-lens {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+    background: radial-gradient(circle 400px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(0, 229, 255, 0.08), transparent 80%);
+    mix-blend-mode: screen;
+}
+
