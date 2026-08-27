@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Kinetic Scroll Skewing: entire grids bend under air resistance
                 const skewAmount = Math.max(-4, Math.min(4, velocity * 0.15));
                 if (typeof gsap !== 'undefined') {
-                    gsap.to('.project-grid, .cert-grid', {
+                    gsap.to('.grid-container', {
                         skewY: skewAmount,
                         duration: 0.2,
                         ease: 'power1.out',
@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const scrollHeight = Math.max(1, document.body.scrollHeight - window.innerHeight);
                 const scrollPercent = window.scrollY / scrollHeight;
                 
-                // Shift from Cyan (195) to Magenta/Red (320)
-                const hue1 = 195 + (scrollPercent * 125); 
-                // Shift from Purple (270) to Orange (30)
-                const hue2 = (270 + (scrollPercent * 120)) % 360;
+                // Shift from Cyan (195) to Royal Blue (225)
+                const hue1 = 195 + (scrollPercent * 30); 
+                // Shift from Deep Blue (240) to Teal (170)
+                const hue2 = 240 - (scrollPercent * 70);
                 
                 document.documentElement.style.setProperty('--accent', `hsl(${Math.floor(hue1)}, 100%, 60%)`);
                 document.documentElement.style.setProperty('--secondary', `hsl(${Math.floor(hue2)}, 100%, 60%)`);
@@ -456,7 +456,10 @@ window.addEventListener('scroll', () => {
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolledPercentage = winScroll / height;
     
-    document.getElementById('scroll-progress').style.width = (scrolledPercentage * 100) + "%";
+    const progressBar = document.querySelector('.progress-bar');
+    if (progressBar) {
+        progressBar.style.width = (scrolledPercentage * 100) + "%";
+    }
     
     const cursorProgress = document.querySelector('.cursor-progress');
     if (cursorProgress) {
@@ -498,27 +501,41 @@ document.getElementById('scrollTopBtn')?.addEventListener('click', () => {
 
 // Interactive Glass Glow & Cursor
 const customCursor = document.getElementById('custom-cursor');
-document.addEventListener('mousemove', e => {
-    // Magic cursor logic
+const shapes = document.querySelectorAll('.shape');
+let mouseX = 0;
+let mouseY = 0;
+let rafId = null;
+
+function updateMouseEffects() {
     if (customCursor) {
-        customCursor.style.left = e.clientX + 'px';
-        customCursor.style.top = e.clientY + 'px';
+        customCursor.style.left = mouseX + 'px';
+        customCursor.style.top = mouseY + 'px';
     }
     
     // Global mouse variables for CSS cursor lens spotlight
-    document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
-    document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+    document.documentElement.style.setProperty('--mouse-x', `${mouseX}px`);
+    document.documentElement.style.setProperty('--mouse-y', `${mouseY}px`);
 
     // Parallax background shapes
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
+    const x = mouseX / window.innerWidth;
+    const y = mouseY / window.innerHeight;
     
-    document.querySelectorAll('.shape').forEach((shape, index) => {
+    shapes.forEach((shape, index) => {
         const speed = (index + 1) * 30;
         const xOffset = (x - 0.5) * speed;
         const yOffset = (y - 0.5) * speed;
         shape.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
     });
+    
+    rafId = null;
+}
+
+document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!rafId) {
+        rafId = requestAnimationFrame(updateMouseEffects);
+    }
 });
 
 // Cursor Hover Effects
@@ -647,31 +664,32 @@ function loadProjects(projects) {
             targetUrl = `https://github.com/AnmolS05/${repoName}`;
         }
         
-        card.onclick = () => window.open(targetUrl, '_blank');
         card.style.cursor = 'pointer';
         card.innerHTML = `
-            <div class="glare"></div>
-            <h3>${formatName(proj.name)}</h3>
-            <p>${proj.description}</p>
-            <div class="tags">
-                ${(proj.technologies || []).slice(0,5).map(t => {
-                    const tech = t.toLowerCase();
-                    let color = '#fff';
-                    let bg = 'rgba(255,255,255,0.1)';
-                    if (tech.includes('react')) { color = '#61dafb'; bg = 'rgba(97,218,251,0.1)'; }
-                    else if (tech.includes('python')) { color = '#ffdf76'; bg = 'rgba(255,223,118,0.1)'; }
-                    else if (tech.includes('node')) { color = '#68a063'; bg = 'rgba(104,160,99,0.1)'; }
-                    else if (tech.includes('js') || tech.includes('javascript')) { color = '#f7df1e'; bg = 'rgba(247,223,30,0.1)'; }
-                    else if (tech.includes('css')) { color = '#264de4'; bg = 'rgba(38,77,228,0.1)'; }
-                    else if (tech.includes('html')) { color = '#e34c26'; bg = 'rgba(227,76,38,0.1)'; }
-                    else if (tech.includes('next')) { color = '#000000'; bg = 'rgba(255,255,255,0.8)'; }
-                    else if (tech.includes('gemini') || tech.includes('ai')) { color = '#8b5cf6'; bg = 'rgba(139,92,246,0.1)'; }
-                    else if (tech.includes('tailwind')) { color = '#38bdf8'; bg = 'rgba(56,189,248,0.1)'; }
-                    
-                    return `<span style="color: ${color}; background: ${bg}; border: 1px solid ${color}40">${t}</span>`;
-                }).join('')}
-            </div>
-            <div class="hover-reveal"><span>${proj.live ? 'View Live App' : 'View Project'} &rarr;</span></div>
+            <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">
+                <div class="glare"></div>
+                <h3>${formatName(proj.name)}</h3>
+                <p>${proj.description}</p>
+                <div class="tags">
+                    ${(proj.technologies || []).slice(0,5).map(t => {
+                        const tech = t.toLowerCase();
+                        let color = '#fff';
+                        let bg = 'rgba(255,255,255,0.1)';
+                        if (tech.includes('react')) { color = '#61dafb'; bg = 'rgba(97,218,251,0.1)'; }
+                        else if (tech.includes('python')) { color = '#ffdf76'; bg = 'rgba(255,223,118,0.1)'; }
+                        else if (tech.includes('node')) { color = '#68a063'; bg = 'rgba(104,160,99,0.1)'; }
+                        else if (tech.includes('js') || tech.includes('javascript')) { color = '#f7df1e'; bg = 'rgba(247,223,30,0.1)'; }
+                        else if (tech.includes('css')) { color = '#264de4'; bg = 'rgba(38,77,228,0.1)'; }
+                        else if (tech.includes('html')) { color = '#e34c26'; bg = 'rgba(227,76,38,0.1)'; }
+                        else if (tech.includes('next')) { color = '#000000'; bg = 'rgba(255,255,255,0.8)'; }
+                        else if (tech.includes('gemini') || tech.includes('ai')) { color = '#8b5cf6'; bg = 'rgba(139,92,246,0.1)'; }
+                        else if (tech.includes('tailwind')) { color = '#38bdf8'; bg = 'rgba(56,189,248,0.1)'; }
+                        
+                        return `<span style="color: ${color}; background: ${bg}; border: 1px solid ${color}40">${t}</span>`;
+                    }).join('')}
+                </div>
+                <div class="hover-reveal"><span>${proj.live ? 'View Live App' : 'View Project'} &rarr;</span></div>
+            </a>
         `;
         container.appendChild(card);
         observer.observe(card);
@@ -728,13 +746,14 @@ function loadCertificates(certs) {
         const card = document.createElement('div');
         card.className = 'card tilt-card fade-in-up';
         card.style.transitionDelay = `${index * 0.1}s`;
-        card.onclick = () => window.open(cert.path, '_blank');
         card.innerHTML = `
-            <div class="glare"></div>
-            <h3>${cert.name}</h3>
-            <span class="cert-type">${cert.type}</span>
-            <br>
-            <div class="hover-reveal"><span>View Document &rarr;</span></div>
+            <a href="${cert.path}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">
+                <div class="glare"></div>
+                <h3>${cert.name}</h3>
+                <span class="cert-type">${cert.type}</span>
+                <br>
+                <div class="hover-reveal"><span>View Document &rarr;</span></div>
+            </a>
         `;
         container.appendChild(card);
         observer.observe(card);
@@ -790,19 +809,21 @@ function initGSAPAnimations() {
     // Cards — stagger animate from below
     gsap.utils.toArray('.grid-container').forEach(container => {
         const cards = container.querySelectorAll('.card');
-        gsap.from(cards, {
-            y: 60,
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: 'back.out(1.4)',
-            scrollTrigger: {
-                trigger: container,
-                start: 'top 85%',
-                toggleActions: 'play none none none'
+        gsap.fromTo(cards, 
+            { y: 60, opacity: 0, scale: 0.9 },
+            {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.6,
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: container,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
             }
-        });
+        );
     });
 
     // Timeline items — fade in from left
