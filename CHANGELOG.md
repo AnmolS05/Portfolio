@@ -317,3 +317,8 @@
 - Added interactive wireframe 3D primitives (Icosahedrons, Octahedrons) to the background WebGL scene.
 - Implemented dynamic boundaries and mouse-tracking parallax for the 3D objects.
 
+
+### Iteration 3 (New Loop): Cinematic Title Text Scramble
+- Implemented a Hacker-style text scramble decode effect (scrambleText) for all section titles (.section-title).
+- Wired the effect into the existing GSAP ScrollTrigger to decode dynamically when the user scrolls sections into view.
+

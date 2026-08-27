@@ -508,7 +508,7 @@ function initGSAPAnimations() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Section titles — slide in from left with underline draw
+    // Section titles — slide in from left with underline draw and scramble
     gsap.utils.toArray('.section-title').forEach(title => {
         gsap.from(title, {
             x: -60,
@@ -518,7 +518,8 @@ function initGSAPAnimations() {
             scrollTrigger: {
                 trigger: title,
                 start: 'top 85%',
-                toggleActions: 'play none none none'
+                toggleActions: 'play none none none',
+                onEnter: () => scrambleText(title)
             }
         });
     });
@@ -939,6 +940,36 @@ function initParticles() {
     }
 
     animate();
+}
+
+/* =========================================================================
+   Hacker Text Scramble Effect
+   ========================================================================= */
+function scrambleText(el) {
+    const originalText = el.getAttribute('data-original-text') || el.innerText;
+    if (!el.hasAttribute('data-original-text')) {
+        el.setAttribute('data-original-text', originalText);
+    }
+    const chars = '!<>-_\\/[]{}—=+*^?#_';
+    let iteration = 0;
+    
+    clearInterval(el.scrambleInterval);
+    el.scrambleInterval = setInterval(() => {
+        el.innerText = originalText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) return letter;
+                if(letter === ' ') return ' ';
+                return chars[Math.floor(Math.random() * chars.length)];
+            })
+            .join("");
+        
+        if (iteration >= originalText.length) {
+            clearInterval(el.scrambleInterval);
+            el.innerText = originalText;
+        }
+        iteration += 1 / 2; // Controls decode speed
+    }, 40);
 }
 
 /* =========================================================================
