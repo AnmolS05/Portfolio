@@ -63,6 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         overwrite: 'auto'
                     });
                 }
+                
+                // Dynamic Color Shift based on Scroll Depth
+                const scrollHeight = Math.max(1, document.body.scrollHeight - window.innerHeight);
+                const scrollPercent = window.scrollY / scrollHeight;
+                
+                // Shift from Cyan (195) to Magenta/Red (320)
+                const hue1 = 195 + (scrollPercent * 125); 
+                // Shift from Purple (270) to Orange (30)
+                const hue2 = (270 + (scrollPercent * 120)) % 360;
+                
+                document.documentElement.style.setProperty('--accent', `hsl(${Math.floor(hue1)}, 100%, 60%)`);
+                document.documentElement.style.setProperty('--secondary', `hsl(${Math.floor(hue2)}, 100%, 60%)`);
+                
+                // Update WebGL Grid Floor color
+                if (window.gridHelper) {
+                    window.gridHelper.material.color.setHSL(hue1 / 360, 1, 0.6);
+                }
             });
             gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
             gsap.ticker.lagSmoothing(0);
@@ -1094,11 +1111,11 @@ function initParticles() {
     // ==========================================
     // ADD INFINITE SYNTHWAVE GRID FLOOR
     // ==========================================
-    const gridHelper = new THREE.GridHelper(60, 60, 0x00e5ff, 0x00e5ff);
-    gridHelper.position.y = -4;
-    gridHelper.material.opacity = 0.15;
-    gridHelper.material.transparent = true;
-    scene.add(gridHelper);
+    window.gridHelper = new THREE.GridHelper(60, 60, 0x00e5ff, 0x00e5ff);
+    window.gridHelper.position.y = -4;
+    window.gridHelper.material.opacity = 0.15;
+    window.gridHelper.material.transparent = true;
+    scene.add(window.gridHelper);
 
     const geometries = [
         new THREE.IcosahedronGeometry(0.8, 0),
@@ -1170,9 +1187,11 @@ function initParticles() {
         uniforms.u_time.value += 0.003; // SLOWED DOWN
 
         // Animate infinite grid floor
-        gridHelper.position.z += 0.02;
-        if (gridHelper.position.z > 1) {
-            gridHelper.position.z = 0;
+        if (window.gridHelper) {
+            window.gridHelper.position.z += 0.02;
+            if (window.gridHelper.position.z > 1) {
+                window.gridHelper.position.z = 0;
+            }
         }
 
         // Smooth mouse interpolation for shader

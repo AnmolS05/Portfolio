@@ -410,3 +410,9 @@
 - As you scroll down the page, section titles ('Projects', 'Certificates') now physically unfold letter-by-letter in 3D space (otationX), staggering perfectly.
 - It drastically elevates the production value and gives a futuristic, highly engineered feel to the layout's typography.
 
+
+### Iteration 19: Dynamic Scroll-Triggered Global Color Shift
+- Tied the global CSS variables (--accent and --secondary) to the Lenis scroll percentage in script.js.
+- As you scroll down the page, the entire color palette of the site (glows, text strokes, grids, and Three.js materials) slowly hue-shifts from Cyan/Purple to Magenta/Orange.
+- This creates a massive, immersive ambient environment change as you move through the portfolio, making the page feel alive.
+
