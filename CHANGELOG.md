@@ -392,3 +392,9 @@
 - Now, when you scroll rapidly, the entire UI dynamically bends and stretches under 'air resistance' before snapping back into place.
 - Adds an incredibly fluid, bouncy, tactile momentum to navigation.
 
+
+### Iteration 16: Interactive CRT Scanline Overlay
+- Added a persistent, subtle Retro CRT monitor overlay across the entire site.
+- It features a static sub-pixel RGB matrix grid and a slow, infinitely animating glowing horizontal scanline.
+- The mix-blend-mode: overlay ensures it only affects the highlights, adding immense texture and grit to the cyberpunk aesthetic without hurting readability.
+
