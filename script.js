@@ -1,4 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Lenis Smooth Scrolling for buttery UX
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true
+        });
+        
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        
+        if (typeof ScrollTrigger !== 'undefined') {
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
+            gsap.ticker.lagSmoothing(0);
+        }
+    }
+
+    initBootSequence();
+
     // Navigation Logic
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section-block');

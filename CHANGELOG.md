@@ -328,3 +328,9 @@
 - Wired a global click listener to pass click coordinates and timestamp to the shader.
 - Triggers a physics-based shockwave ripple across the nebula background whenever the user clicks.
 
+
+### Iteration 5: Lenis Inertia Scrolling Integration
+- Integrated Lenis smooth scrolling engine.
+- Hooked Lenis requestAnimationFrame into GSAP ticker to ensure butter-smooth ScrollTrigger parity.
+- Instantly upgrades the UX to a premium cinematic scrolling feel.
+
