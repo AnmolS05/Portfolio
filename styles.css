@@ -1636,3 +1636,31 @@ h1, h2, h3, .section-title, .glitch-text {
     transition: text-shadow 0.05s linear;
 }
 
+
+
+/* Custom Cyber Cursor */
+body, a, button, .card, .nav-link { cursor: none !important; }
+
+#custom-cursor, #custom-cursor-trail {
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 10000;
+    mix-blend-mode: screen;
+}
+#custom-cursor {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    transform: translate(-50%, -50%);
+}
+#custom-cursor-trail {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(0, 229, 255, 0.5);
+    background: rgba(0, 229, 255, 0.05);
+    backdrop-filter: blur(2px);
+    transform: translate(-50%, -50%);
+    transition: background 0.3s, border-color 0.3s;
+}
+

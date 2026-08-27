@@ -1,4 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Custom Cyber Cursor
+    const cursor = document.createElement('div');
+    cursor.id = 'custom-cursor';
+    document.body.appendChild(cursor);
+    
+    const cursorTrail = document.createElement('div');
+    cursorTrail.id = 'custom-cursor-trail';
+    document.body.appendChild(cursorTrail);
+
+    window.addEventListener('mousemove', (e) => {
+        if (typeof gsap !== 'undefined') {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
+            gsap.to(cursorTrail, { x: e.clientX, y: e.clientY, duration: 0.6, ease: "power3.out" });
+        }
+    });
+
+    // Hover effect for interactive elements
+    setTimeout(() => {
+        document.querySelectorAll('a, button, .card, .nav-link').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                if(typeof gsap !== 'undefined') {
+                    gsap.to(cursorTrail, { width: 64, height: 64, backgroundColor: 'rgba(255, 0, 85, 0.1)', borderColor: '#ff0055', duration: 0.3 });
+                }
+            });
+            el.addEventListener('mouseleave', () => {
+                if(typeof gsap !== 'undefined') {
+                    gsap.to(cursorTrail, { width: 36, height: 36, backgroundColor: 'rgba(0, 229, 255, 0.05)', borderColor: 'rgba(0, 229, 255, 0.5)', duration: 0.3 });
+                }
+            });
+        });
+    }, 500);
     // Initialize Lenis Smooth Scrolling for buttery UX
     if (typeof Lenis !== 'undefined') {
         const lenis = new Lenis({

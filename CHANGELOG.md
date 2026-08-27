@@ -345,3 +345,9 @@
 - Added dynamic CSS drop-shadow/text-shadow to all headings (h1, h2, h3).
 - Text and cards now dynamically split into red and cyan channels (RGB split / chromatic aberration) when the user scrolls fast, giving a kinetic cyberpunk feel.
 
+
+### Iteration 8: Custom Interactive Cyber Cursor
+- Implemented a custom mouse cursor with a trailing canvas-like GSAP ring.
+- Hides default cursor across the site.
+- Added magnetic hover interactions: when hovering over links or cards, the trailing ring expands and turns neon pink with a blur backdrop-filter.
+
