@@ -1,7 +1,7 @@
 const portfolioData = {
     "certificates": [
         {
-            "name": "Delhi University Certificate",
+            "name": "Develop AI-Powered Prototypes in Google AI Studio - certificate",
             "filename": "anmol-du.pdf",
             "path": "cer/anmol-du.pdf",
             "type": "pdf"
