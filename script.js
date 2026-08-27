@@ -705,7 +705,9 @@ function initParticles() {
     const uniforms = {
         u_time: { value: 0.0 },
         u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-        u_mouse: { value: new THREE.Vector2(0.5, 0.5) }
+        u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
+        u_clickPos: { value: new THREE.Vector2(-1.0, -1.0) },
+        u_clickTime: { value: -10.0 }
     };
 
     const vertexShader = `
@@ -720,6 +722,8 @@ function initParticles() {
         uniform float u_time;
         uniform vec2 u_resolution;
         uniform vec2 u_mouse;
+        uniform vec2 u_clickPos;
+        uniform float u_clickTime;
 
         // Simplex-style hash
         vec3 hash33(vec3 p) {
@@ -758,8 +762,22 @@ function initParticles() {
             // Mouse influence
             vec2 mouse = u_mouse * 0.3;
 
+            // Shockwave Distortion
+            float timeSinceClick = u_time - u_clickTime;
+            vec2 distortedUV = uv;
+            if (timeSinceClick > 0.0 && timeSinceClick < 2.0) {
+                float clickDist = distance(uv, u_clickPos);
+                float radius = timeSinceClick * 1.5;
+                float distFromRing = abs(clickDist - radius);
+                if (distFromRing < 0.2) {
+                    float wave = sin(distFromRing * 40.0 - timeSinceClick * 20.0);
+                    float envelope = smoothstep(0.2, 0.0, distFromRing) * (1.0 - timeSinceClick * 0.5);
+                    distortedUV += normalize(uv - u_clickPos) * wave * envelope * 0.05;
+                }
+            }
+
             // Layered noise for nebula effect
-            vec3 p = vec3(uv * 3.0 + mouse, t);
+            vec3 p = vec3(distortedUV * 3.0 + mouse, t);
             float n1 = fbm(p);
             float n2 = fbm(p + vec3(1.7, 9.2, 1.3) + t * 0.5);
             float n3 = fbm(p + vec3(n1 * 0.5, n2 * 0.3, 0.0));
@@ -892,6 +910,12 @@ function initParticles() {
     window.addEventListener('mousemove', (e) => {
         targetMouse.x = e.clientX / window.innerWidth;
         targetMouse.y = 1.0 - e.clientY / window.innerHeight;
+    });
+    
+    window.addEventListener('click', (e) => {
+        uniforms.u_clickPos.value.x = e.clientX / window.innerWidth;
+        uniforms.u_clickPos.value.y = 1.0 - e.clientY / window.innerHeight;
+        uniforms.u_clickTime.value = uniforms.u_time.value;
     });
 
     window.addEventListener('scroll', () => {

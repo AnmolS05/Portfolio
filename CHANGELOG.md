@@ -322,3 +322,9 @@
 - Implemented a Hacker-style text scramble decode effect (scrambleText) for all section titles (.section-title).
 - Wired the effect into the existing GSAP ScrollTrigger to decode dynamically when the user scrolls sections into view.
 
+
+### Iteration 4 (New Loop): WebGL Shockwave Distortion on Click
+- Added a spatial distortion shader to the WebGL fragment shader.
+- Wired a global click listener to pass click coordinates and timestamp to the shader.
+- Triggers a physics-based shockwave ripple across the nebula background whenever the user clicks.
+
