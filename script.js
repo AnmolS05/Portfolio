@@ -315,6 +315,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Boot Sequence
     initBootSequence();
 
+    // Cursor Trail
+    initCursorTrail();
+
     // Particle Canvas (WebGL Nebula)
     initParticles();
 
@@ -690,11 +693,10 @@ function loadProjects(projects) {
         // Initialize VanillaTilt if available
         if (typeof VanillaTilt !== 'undefined') {
             VanillaTilt.init(card, {
-                max: 15,
+                max: 10,
                 speed: 400,
-                glare: true,
-                "max-glare": 0.05,
-                scale: 1.05
+                glare: false,
+                scale: 1.02
             });
         }
     });
@@ -765,11 +767,10 @@ function initTilt() {
     const cards = document.querySelectorAll('.tilt-card');
     if (typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(cards, {
-            max: 15,
+            max: 10,
             speed: 400,
-            glare: true,
-            'max-glare': 0.3,
-            scale: 1.05,
+            glare: false,
+            scale: 1.02,
             perspective: 1000,
             gyroscope: true
         });
@@ -982,6 +983,51 @@ function initParticles() {
     if (!canvas || typeof THREE === 'undefined') return;
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+    // Render target for post‑processing
+    const renderTarget = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
+    // Full‑screen quad scene for glitch shader
+    const quadScene = new THREE.Scene();
+    const quadCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const quadGeometry = new THREE.PlaneGeometry(2, 2);
+    const glitchUniforms = {
+        tDiffuse: { value: null },
+        uTime: { value: 0 },
+        uIntensity: { value: 0 }
+    };
+    const glitchMaterial = new THREE.ShaderMaterial({
+        uniforms: glitchUniforms,
+        vertexShader: `
+            varying vec2 vUv;
+            void main() {
+                vUv = uv;
+                gl_Position = vec4( position, 1.0 );
+            }
+        `,
+        fragmentShader: `
+            uniform sampler2D tDiffuse;
+            uniform float uTime;
+            uniform float uIntensity;
+            varying vec2 vUv;
+            // Simple noise function
+            float rand(vec2 co){
+                return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+            }
+            void main(){
+                vec2 uv = vUv;
+                float noise = rand(uv * uTime) * uIntensity;
+                // RGB channel offset based on noise
+                vec2 offset = vec2(noise * 0.02, noise * 0.02);
+                vec4 color = texture2D(tDiffuse, uv);
+                vec4 r = texture2D(tDiffuse, uv + offset);
+                vec4 g = texture2D(tDiffuse, uv);
+                vec4 b = texture2D(tDiffuse, uv - offset);
+                gl_FragColor = vec4(r.r, g.g, b.b, 1.0);
+            }
+        `,
+        transparent: false
+    });
+    const quadMesh = new THREE.Mesh(quadGeometry, glitchMaterial);
+    quadScene.add(quadMesh);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -1244,8 +1290,24 @@ function initParticles() {
     });
 
     // Animation loop
+    // Scroll velocity tracking for glitch intensity
+    let lastScrollY = 0;
+    let lastScrollTime = performance.now();
+    let scrollVelocity = 0;
     function animate() {
         requestAnimationFrame(animate);
+        const now = performance.now();
+        // Compute scroll velocity (pixels per ms)
+        const dy = window.scrollY - lastScrollY;
+        const dt = now - lastScrollTime;
+        scrollVelocity = dt > 0 ? dy / dt : 0;
+        lastScrollY = window.scrollY;
+        lastScrollTime = now;
+        const intensity = Math.min(Math.abs(scrollVelocity) * 2000, 1.0); // map to [0,1]
+        // Update glitch uniform
+        glitchUniforms.uTime.value = uniforms.u_time.value;
+        glitchUniforms.uIntensity.value = intensity;
+        // Update time uniform
         uniforms.u_time.value += 0.003; // SLOWED DOWN
 
         // Animate infinite grid floor
@@ -1255,6 +1317,13 @@ function initParticles() {
                 window.gridHelper.position.z = 0;
             }
         }
+        // Render scene to texture
+        renderer.setRenderTarget(renderTarget);
+        renderer.render(scene, camera);
+        renderer.setRenderTarget(null);
+        // Apply glitch shader
+        glitchUniforms.tDiffuse.value = renderTarget.texture;
+        renderer.render(quadScene, quadCamera);
 
         // Smooth mouse interpolation for shader
         uniforms.u_mouse.value.x += (targetMouse.x - uniforms.u_mouse.value.x) * 0.05;
@@ -1313,14 +1382,14 @@ function scrambleText(el) {
             clearInterval(el.scrambleInterval);
             el.innerText = originalText;
         }
-        iteration += 1 / 2; // Controls decode speed
+        iteration += 1 / 4; // Controls decode speed (slower now)
     }, 40);
 }
 
 /* =========================================================================
    Cursor Trail — Fading trail of dots behind custom cursor
    ========================================================================= */
-(function initCursorTrail() {
+function initCursorTrail() {
     if (window.innerWidth < 768) return; // Skip on mobile
 
     const TRAIL_COUNT = 6;
@@ -1363,21 +1432,23 @@ function scrambleText(el) {
     // ==========================================
     // TIMELINE ANIMATED GLOWING LINE
     // ==========================================
-    gsap.utils.toArray('.timeline-list').forEach(list => {
-        gsap.to(list, {
-            '--timeline-progress': '1', // We will animate a custom property if we use CSS Variables, or we can animate the pseudo element via CSS variables. Wait, let's use a CSS variable for the scaleY.
-            scrollTrigger: {
-                trigger: list,
-                start: "top 70%",
-                end: "bottom 30%",
-                scrub: 1
-            },
-            onUpdate: function() {
-                list.style.setProperty('--progress', this.progress());
-            }
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.utils.toArray('.timeline-list').forEach(list => {
+            gsap.to(list, {
+                '--timeline-progress': '1', 
+                scrollTrigger: {
+                    trigger: list,
+                    start: "top 70%",
+                    end: "bottom 30%",
+                    scrub: 1
+                },
+                onUpdate: function() {
+                    list.style.setProperty('--progress', this.progress());
+                }
+            });
         });
-    });
-})();
+    }
+}
 
 /* =========================================================================
    Button Ripple Effect — Material Design-style ripple on click

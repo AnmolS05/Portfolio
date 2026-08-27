@@ -15,7 +15,7 @@
     left: 0;
     width: 0%;
     height: 4px;
-    background: linear-gradient(to right, var(--accent), #8b5cf6);
+    background: linear-gradient(to right, var(--accent), var(--accent));
     z-index: 1000;
     transition: width 0.1s ease;
 }
@@ -108,7 +108,7 @@
     top: 0;
     height: 100%;
     width: 2px;
-    background: linear-gradient(180deg, var(--accent), #c026d3);
+    background: linear-gradient(180deg, var(--accent), var(--accent-hover));
     border-radius: 2px;
     transform-origin: top;
     transform: scaleY(var(--progress, 0));
@@ -300,8 +300,8 @@ h1, h2, h3 {
 }
 
 .shape-1 { width: 400px; height: 400px; background: #38bdf8; top: -10%; left: -10%; }
-.shape-2 { width: 500px; height: 500px; background: #8b5cf6; bottom: -20%; right: -10%; animation-delay: -5s; }
-.shape-3 { width: 300px; height: 300px; background: #c026d3; top: 40%; left: 60%; animation-delay: -10s; }
+.shape-2 { width: 500px; height: 500px; background: var(--accent); bottom: -20%; right: -10%; animation-delay: -5s; }
+.shape-3 { width: 300px; height: 300px; background: var(--accent-hover); top: 40%; left: 60%; animation-delay: -10s; }
 
 @keyframes float {
     0% { transform: translate(0, 0) scale(1) rotate(0deg); }
@@ -320,7 +320,7 @@ h1, h2, h3 {
 }
 
 .chat-message.user {
-    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    background: linear-gradient(135deg, var(--accent), var(--accent));
     color: white;
     align-self: flex-end;
     border-bottom-right-radius: 2px;
@@ -364,7 +364,7 @@ h1, h2, h3 {
 
 @keyframes typingBounce {
     0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
-    50% { transform: translateY(-5px) scale(1.2); opacity: 1; background: #8b5cf6; }
+    50% { transform: translateY(-5px) scale(1.2); opacity: 1; background: var(--accent); }
 }
 
 /* =========================================================================
@@ -444,9 +444,9 @@ h1, h2, h3 {
     background: linear-gradient(
         180deg,
         var(--accent),
-        #8b5cf6,
-        #c026d3,
-        #8b5cf6,
+        var(--accent),
+        var(--accent-hover),
+        var(--accent),
         var(--accent)
     );
     background-size: 100% 300%;
@@ -471,7 +471,7 @@ h1, h2, h3 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    background: linear-gradient(135deg, var(--accent), var(--accent));
     border: none;
     color: white;
     font-size: 24px;
@@ -552,7 +552,7 @@ h1, h2, h3 {
     content: '';
     position: absolute;
     top: -3px; left: -3px; right: -3px; bottom: -3px;
-    background: conic-gradient(from 0deg, var(--accent), #8b5cf6, #c026d3, var(--accent));
+    background: conic-gradient(from 0deg, var(--accent), var(--accent), var(--accent-hover), var(--accent));
     border-radius: 50%;
     z-index: -1;
     animation: spinGradient 4s linear infinite;
@@ -695,7 +695,7 @@ h1, h2, h3 {
     width: 16px;
     height: 3px;
     border-radius: 2px;
-    background: linear-gradient(90deg, var(--accent), #8b5cf6);
+    background: linear-gradient(90deg, var(--accent), var(--accent));
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform-origin: left;
 }
@@ -734,7 +734,7 @@ h1, h2, h3 {
     background: #050811;
 }
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--accent), #c026d3);
+    background: linear-gradient(180deg, var(--accent), var(--accent-hover));
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -745,7 +745,7 @@ h1, h2, h3 {
     display: inline-block;
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
-    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    background: linear-gradient(135deg, var(--accent), var(--accent));
     color: white;
     text-decoration: none;
     font-weight: 600;
@@ -774,7 +774,7 @@ h1, h2, h3 {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(45deg, var(--accent), #8b5cf6, var(--accent));
+    background: linear-gradient(45deg, var(--accent), var(--accent), var(--accent));
     background-size: 200% 200%;
     z-index: -1;
     transition: opacity 0.3s ease;
@@ -865,7 +865,7 @@ h1, h2, h3 {
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    background: linear-gradient(90deg, #fff, var(--accent), #8b5cf6, #fff);
+    background: linear-gradient(90deg, #fff, var(--accent), var(--accent), #fff);
     background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -899,7 +899,7 @@ h1, h2, h3 {
     width: 0;
     height: 4px;
     border-radius: 2px;
-    background: linear-gradient(90deg, var(--accent), #8b5cf6, #c026d3);
+    background: linear-gradient(90deg, var(--accent), var(--accent), var(--accent-hover));
     transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -1170,7 +1170,7 @@ h1, h2, h3 {
 .boot-progress-fill {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, var(--accent), #8b5cf6, #c026d3);
+    background: linear-gradient(90deg, var(--accent), var(--accent), var(--accent-hover));
     border-radius: 2px;
     transition: width 0.4s ease;
     box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(139, 92, 246, 0.5);
@@ -1298,7 +1298,7 @@ h1, h2, h3 {
         -45deg, 
         var(--text-light) 0%, 
         var(--accent) 25%, 
-        #c026d3 50%, 
+        var(--accent-hover) 50%, 
         var(--accent) 75%, 
         var(--text-light) 100%
     );
