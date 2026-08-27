@@ -368,3 +368,9 @@
 - Upgraded Vanilla Tilt cards by applying translateZ parallax to all child elements.
 - Content (titles, descriptions, tags) now physically 'pops out' of the cards in 3D space when tilted or hovered, completing the WebGL/3D illusion.
 
+
+### Iteration 12: Global Holographic Text Scrambling
+- Expanded the text scrambling utility into a global event delegator.
+- Now, hovering over any card title, button, or navigation link instantly triggers a matrix-style text scramble decode effect.
+- Adds an incredibly cohesive cyberpunk 'hacker' aesthetic across the entire portfolio.
+

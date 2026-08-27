@@ -150,6 +150,24 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('mousedown', playClickSound);
         });
     }, 1000);
+    
+    // Global Holographic Text Scrambling on Hover
+    document.body.addEventListener('mouseover', (e) => {
+        if (e.target && e.target.matches('.card h3, .card h4, .nav-link, .btn')) {
+            if (e.target.dataset.isScrambling === 'true') return;
+            
+            if (!e.target.dataset.originalText) {
+                e.target.dataset.originalText = e.target.innerText;
+            }
+            e.target.dataset.isScrambling = 'true';
+            
+            scrambleText(e.target, e.target.dataset.originalText, 400);
+            
+            setTimeout(() => {
+                e.target.dataset.isScrambling = 'false';
+            }, 600);
+        }
+    });
 
     // Navigation Logic & Magnetic Hover Effect
     const navLinks = document.querySelectorAll('.nav-link');
