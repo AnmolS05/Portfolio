@@ -1696,3 +1696,31 @@ body, a, button, .card, .nav-link { cursor: none !important; }
     transform: translateZ(50px);
 }
 
+
+
+/* Cinematic Background Marquee */
+.marquee-bg {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100vw;
+    transform: translateY(-50%) rotate(-10deg);
+    z-index: 0; /* Between nebula and content */
+    pointer-events: none;
+    opacity: 0.02;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.marquee-track {
+    display: inline-block;
+    font-size: 15vw;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent);
+    animation: scrollMarquee 40s linear infinite;
+}
+@keyframes scrollMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-33.33%); }
+}
+

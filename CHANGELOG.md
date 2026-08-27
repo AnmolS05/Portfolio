@@ -374,3 +374,9 @@
 - Now, hovering over any card title, button, or navigation link instantly triggers a matrix-style text scramble decode effect.
 - Adds an incredibly cohesive cyberpunk 'hacker' aesthetic across the entire portfolio.
 
+
+### Iteration 13: Cinematic Background Typography Marquee
+- Added a massive, slowly scrolling hollow typography marquee to the background.
+- Wedged perfectly between the WebGL nebula (z-index -2) and the glass panels (z-index 1).
+- The marquee gives the site an unmistakable 'premium agency' aesthetic and deepens the sense of 3D layering.
+
