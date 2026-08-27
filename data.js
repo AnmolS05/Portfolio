@@ -69,50 +69,68 @@ const portfolioData = {
     ],
     "projects": [
         {
-            "name": "business-crm-and-advisor",
-            "description": "Enterprise Indian Business CRM with Lakhs & Crores tracking and Gemini AI Financial Advisor",
-            "path": "C:\\Users\\Anmol\\Documents\\business-crm-and-advisor"
+            "name": "AeroInsight Intelligence",
+            "description": "Enterprise-grade drone telemetry & AI risk assessment platform. Features dual AI-pipelines (Google Gemini + Custom ML) and a deep dark glassmorphic UI.",
+            "path": "C:\\Users\\Anmol\\Documents\\AeroInsight",
+            "github": "AeroInsight",
+            "live": "https://aero-insights-live.vercel.app/",
+            "technologies": ["React", "Node.js", "Gemini AI", "Tailwind", "Leaflet"]
         },
         {
-            "name": "ai resume screening",
-            "description": "A great project",
-            "path": "C:\\Users\\Anmol\\Documents\\ai resume screening"
+            "name": "CapitalFlow Pro (CRM & Advisor)",
+            "description": "Enterprise Indian Business CRM with financial tracking and AI-Powered Financial Advisor. Features Kanban pipeline and automated expense tracking.",
+            "path": "C:\\Users\\Anmol\\Documents\\business-crm-and-advisor",
+            "github": "AI-Powered-Sales-Intelligence-Dashboard",
+            "technologies": ["React", "Node.js", "Gemini AI", "TailwindCSS"]
         },
         {
-            "name": "trendpulse",
-            "description": "A great project",
-            "path": "C:\\Users\\Anmol\\Documents\\trendpulse"
+            "name": "AI Resume Screening ATS",
+            "description": "Intelligent Applicant Tracking System (ATS) automating resume screening, candidate ranking, and email ingestion using ML and LLMs.",
+            "path": "C:\\Users\\Anmol\\Documents\\ai resume screening",
+            "github": "ML-based-Resume-Organization-and-Skills-based-Classification",
+            "technologies": ["React", "Python", "Flask", "SQLite", "Gemini API"]
         },
         {
-            "name": "scriberx",
-            "description": "AI-powered handwritten medical prescription analyser using Google Gemini VLM",
-            "path": "C:\\Users\\Anmol\\Downloads\\scriberx"
+            "name": "TrendPulse",
+            "description": "Real-time social media trend analysis and sentiment tracking platform. Aggregates data streams to provide actionable marketing insights.",
+            "path": "C:\\Users\\Anmol\\Documents\\trendpulse",
+            "github": "trendpulse",
+            "technologies": ["React", "Node.js", "Python", "NLP"]
+        },
+        {
+            "name": "ScribeRx",
+            "description": "AI-powered handwritten medical prescription analyser. Uses Google Gemini VLM to digitize and verify doctor's notes for pharmacy fulfillment.",
+            "path": "C:\\Users\\Anmol\\Downloads\\scriberx",
+            "github": "scriberx",
+            "technologies": ["Python", "Gemini VLM", "React", "Tailwind"]
         },
         {
             "name": "InviMan",
-            "description": "Production-grade Inventory Management System with AI-powered bill processing",
-            "path": "C:\\Users\\Anmol\\Documents\\InviMan"
+            "description": "Production-grade Inventory Management System featuring AI-powered bill processing, automated restocking alerts, and supplier analytics.",
+            "path": "C:\\Users\\Anmol\\Documents\\InviMan",
+            "github": "InviMan",
+            "technologies": ["Node.js", "React", "Express", "MongoDB"]
         },
         {
             "name": "BiSign3D",
-            "description": "A great project",
-            "path": "C:\\Users\\Anmol\\Documents\\BiSign3D"
+            "description": "Advanced 3D Biometric Signature and spatial gesture recognition system utilizing WebGL and machine learning for secure authentication.",
+            "path": "C:\\Users\\Anmol\\Documents\\BiSign3D",
+            "github": "BiSign3D",
+            "technologies": ["Three.js", "Python", "TensorFlow", "React"]
         },
         {
             "name": "Orbits",
-            "description": "A great project",
-            "path": "C:\\Users\\Anmol\\Documents\\Orbits"
+            "description": "Interactive 3D orbital mechanics and astrophysics visualizer. Simulates planetary bodies and satellite trajectories in real-time.",
+            "path": "C:\\Users\\Anmol\\Documents\\Orbits",
+            "github": "Orbits",
+            "technologies": ["Three.js", "WebGL", "React", "Physics"]
         },
         {
-            "name": "fake-news-detection",
-            "description": "A great project",
-            "path": "C:\\Users\\Anmol\\Documents\\fake-news-detection"
-        },
-        {
-            "name": "AeroInsight",
-            "description": "A great project",
-            "path": "C:\\Users\\Anmol\\Documents\\AeroInsight",
-            "github": "AeroInsight"
+            "name": "Fake News Detection",
+            "description": "Machine learning pipeline for detecting misinformation and fake news using NLP algorithms, TF-IDF vectorization, and deep learning models.",
+            "path": "C:\\Users\\Anmol\\Documents\\fake-news-detection",
+            "github": "fake-news-detection",
+            "technologies": ["Python", "Scikit-Learn", "NLP", "Flask"]
         }
     ]
 };

@@ -205,3 +205,103 @@
 - **Date**: 2026-08-27T18:04:00+05:30
 - **Description**: Added a Vercel Serverless Function (api/chat.js) to securely proxy Gemini API requests and updated script.js to call this backend route, removing all exposed API keys.
 - **Files affected**: script.js, api/chat.js
+
+## 2026-08-27 18:20:00
+- **Description**: VFX-Grade UI Overhaul. Replaced 2D particle background with Three.js WebGL shader-based nebula/aurora. Added GSAP ScrollTrigger animations (staggered card reveals, word-by-word text, slide-in titles, scroll-triggered skill bars). Replaced manual tilt with VanillaTilt (GPU-accelerated 3D tilt with glare). Added holographic card shimmer overlay with animated gradient. Upgraded boot sequence with glitch text, progress bar, wave visualizer, and cinematic circular reveal. Upgraded sidebar with animated gradient border, breathing avatar glow, pill-shaped nav indicators, and background sweep hover effect. Upgraded section titles with animated gradient text shift and breathing scale. Upgraded chat messages with gradient user bubbles and accent-bordered AI responses. Added cursor trail dots, button ripple effect, focus ring glow, and reduced-motion accessibility media query. Enhanced mobile responsiveness.
+- **Files affected**: index.html, styles.css, script.js
+
+## 2026-08-27 18:29:00
+- **Description**: Continuous Upgrade Loop - Iterations 1 & 2. Implemented GSAP ScrollToPlugin for smooth scrolling between sections and dynamic sidebar active link highlighting. Upgraded WebGL Nebula background to include an immersive 3D interactive floating starfield (THREE.Points) that reacts to cursor position and scroll depth using a PerspectiveCamera.
+- **Files affected**: index.html, script.js
+
+## 2026-08-27 18:30:00
+- **Description**: Continuous Upgrade Loop - Iteration 3. Implemented custom Webkit scrollbars with animated gradient thumbs. Upgraded button global styling (.btn) with magnetic-style scaling hover effects and dynamic multi-layered neon drop shadows for enhanced tactile interaction.
+- **Files affected**: styles.css
+
+## 2026-08-27 18:34:00
+- **Description**: Continuous Upgrade Loop - Iteration 4 & 5. Upgraded chat window with intense frosted glass backdrop filter and deeper shadowing for 3D depth. Upgraded typing dots with bouncy cascade animation. Added glowing pulse animation to the boot progress bar.
+- **Files affected**: styles.css
+
+## 2026-08-27 18:37:00
+- **Description**: Continuous Upgrade Loop - Iteration 6. Added advanced interactive hover tracking (magnetic radial gradient glow) to .skill-item cards, matching premium VFX aesthetics seen in Lovable and Claude UIs.
+- **Files affected**: styles.css, script.js
+
+## 2026-08-27 18:39:00
+- **Description**: Continuous Upgrade Loop - Iteration 7. Added cyber-punk aesthetic text scramble / glitch hover effect to .glitch-text headers to mimic a terminal decoding data on hover.
+- **Files affected**: script.js
+
+## 2026-08-27 18:45:00
+- **Description**: Continuous Upgrade Loop - Iteration 8. Fixed Syntax error that was crashing the site on load. Added animated glowing timelines to the experience/education section that fills dynamically on scroll (GSAP ScrollTrigger).
+- **Files affected**: styles.css, script.js
+
+## 2026-08-27 18:49:00
+- **Description**: Continuous Upgrade Loop - Iteration 11. Initialized 3D VanillaTilt effect on the dynamic Projects and Certificates cards so they react in 3D space with a glass glare effect on hover. Added a full-page Cyberpunk Scanner Line overlay that continuously sweeps across the UI.
+- **Files affected**: script.js, index.html, styles.css
+
+## 2026-08-27 18:50:00
+- **Description**: Continuous Upgrade Loop - Iteration 12. Added "Liquid Energy" gradient animation to all section titles. Titles now have a slowly shifting gradient flow using CSS keyframes and background clipping, making them look highly dynamic and futuristic.
+- **Files affected**: styles.css
+
+## 2026-08-27 18:55:00
+- **Description**: Manual Override. Per user request, significantly slowed down the WebGL particle nebula animation speed in script.js and completely removed the Cyberpunk Scanner line overlay from index.html and styles.css.
+
+## 2026-08-27 18:56:00
+- **Description**: Continuous Upgrade Loop - Iteration 15. Added an animated Cyberpunk Hex Grid pattern to the sidebar's background behind the glass overlay. The SVG grid gently pulses and scales over time to give the sidebar a highly futuristic, sci-fi HUD panel aesthetic.
+- **Files affected**: styles.css
+
+## 2026-08-27 18:57:00
+- **Description**: Manual Override. Vastly reduced the mouse rotation multiplier for the WebGL particle nebula to prevent the particle field from spinning too fast when moving the cursor horizontally across the screen.
+
+## 2026-08-27 18:58:00
+- **Description**: Continuous Upgrade Loop - Iteration 16. Added a highly interactive "Magnetic Hover Effect" to the Sidebar Navigation Links and Social Icons. As the user moves their mouse close to these elements, they physically pull towards the cursor, creating a tactile and responsive UI experience.
+- **Files affected**: script.js
+
+## 2026-08-27 19:00:00
+- **Description**: Continuous Upgrade Loop - Iteration 17. Implemented "Glassmorphism Glowing Borders" on all .card elements (Projects and Certificates). A dynamically rotating conic-gradient acts as a neon light beam racing around the card perimeter, fading in dramatically on hover, complementing the existing VanillaTilt 3D interaction.
+- **Files affected**: styles.css
+
+## 2026-08-27 19:02:00
+- **Description**: Continuous Upgrade Loop - Iteration 18. Implemented a "Mouse-Reactive Parallax Depth" effect on all the background .shape elements. They now smoothly float in 3D space opposite to the user's cursor movement, enhancing the spatial depth of the entire portfolio.
+- **Files affected**: script.js
+
+## 2026-08-27 19:04:00
+- **Description**: Continuous Upgrade Loop - Iteration 19. Added a "Segmented Sci-Fi Scroll Progress HUD" anchored to the right side of the screen. As you scroll down the page, a glowing neon cyan segmented bar fills up, acting as a high-tech visual indicator of page depth.
+- **Files affected**: script.js, styles.css
+
+## 2026-08-27 19:06:00
+- **Description**: Continuous Upgrade Loop - Iteration 20. Completely replaced the standard OS mouse cursor with a custom "Sci-Fi Laser Pointer" cursor. It features a solid cyan dot that tracks the mouse instantly, followed by a glowing outline ring that trails behind with a smooth physics-based spring effect. The cursor morphs and highlights when hovering over clickable elements like cards and buttons.
+- **Files affected**: index.html, script.js, styles.css
+
+## 2026-08-27 19:08:00
+- **Description**: Continuous Upgrade Loop - Iteration 21. Added a "Scroll Spy Interactive Navigation" system. The sidebar navigation links now dynamically glow, shift forward, and display a terminal prompt (>) when you scroll to their respective sections in the main viewport, providing clear contextual awareness.
+- **Files affected**: script.js, styles.css
+
+## 2026-08-27 19:10:00
+- **Description**: Continuous Upgrade Loop - Iteration 22. Implemented a "Liquid Click Ripple" effect. Clicking anywhere on the screen now spawns a beautiful, glowing cyan water ripple that rapidly expands outward and fades away, giving the interface a highly tactile and immersive response.
+- **Files affected**: script.js, styles.css
+
+## 2026-08-27 19:12:00
+- **Description**: Continuous Upgrade Loop - Iteration 23. Added a Cyberpunk "Text Scramble" decoding effect. When hovering over any Project or Certificate card, the title rapidly scrambles through random alphanumeric characters and symbols before cleanly resolving back into the actual title.
+- **Files affected**: script.js
+
+## 2026-08-27 19:14:00
+- **Description**: Continuous Upgrade Loop - Iteration 24. Implemented a "Dynamic Image RGB Glitch" effect for the Sidebar Profile Picture. Hovering over the avatar now causes the image to visibly glitch and split into intense red and cyan color channels in a rapid loop, adding a chaotic but highly stylized cyber-aesthetic.
+- **Files affected**: styles.css
+
+## 2026-08-27 19:17:00
+- **Description**: Continuous Upgrade Loop - Iteration 25. Added a "3D Layered Typography" hover effect to the main profile name (h1). Hovering over the name now pops it off the page by physically translating it up-and-left while casting a deep, multi-layered cyan-to-magenta block shadow beneath it, giving the text a very physical, retro-wave 3D presence.
+- **Files affected**: styles.css
+
+## 2026-08-27 19:18:00
+- **Description**: Continuous Upgrade Loop - Iteration 26. Added a "Random Global CRT Glitch". Every few seconds, the entire viewport undergoes a micro-fraction of a second glitch with scanlines, simulating a corrupted data feed or an old-school CRT monitor losing sync. It is subtle and fast enough not to be distracting, but adds immense atmosphere.
+- **Files affected**: index.html, script.js, styles.css
+
+## 2026-08-27 19:21:00
+- **Description**: Continuous Upgrade Loop - Iteration 27. Added "Holographic Skill Tags". When hovering over the skill tags on Project and Certificate cards, they now physically pop up, scale, rotate slightly in 3D, and cast a blurred, glowing neon reflection downwards, making them look like floating holograms.
+- **Files affected**: styles.css
+
+## 2026-08-27 19:28:00
+- **Description**: Continuous Upgrade Loop - Iterations 28 & 29.
+  - **Iteration 28**: Added a "Dynamic Neon Border" to all cards. They now feature a constantly shifting, animated gradient border that circles around the cards.
+  - **Iteration 29**: Implemented a "Digital Glitch Transition on Scroll". Instead of simply sliding up, cards and section headers now digitally "glitch" into existence as they enter the viewport, using complex clip-paths and hue rotation.
+- **Files affected**: script.js, styles.css

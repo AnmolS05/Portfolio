@@ -8,10 +8,27 @@
     <title>Anmol | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Three.js for WebGL background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <!-- GSAP for buttery-smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js" defer></script>
+    <!-- Vanilla Tilt for smooth GPU-accelerated 3D card tilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
 </head>
 <body>
     <div id="boot-sequence">
-        <div class="boot-text"></div>
+        <div style="text-align: center;">
+            <div class="boot-text"></div>
+            <div class="boot-waves">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="boot-progress">
+            <div class="boot-progress-fill"></div>
+        </div>
     </div>
     <div id="custom-tooltip"></div>
     <div id="custom-cursor">
@@ -23,6 +40,9 @@
     <div id="scroll-progress"></div>
     <button id="scrollTopBtn" title="Go to top">&uarr;</button>
     <div class="noise-overlay"></div>
+    <div class="crt-glitch-overlay"></div>
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
     <canvas id="particle-canvas"></canvas>
     <div class="bg-shapes">
         <div class="shape shape-1"></div>
