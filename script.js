@@ -18,20 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Lenis Smooth Scrolling for buttery UX
     if (typeof Lenis !== 'undefined') {
-        const lenis = new Lenis({
+        window.lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             smooth: true
         });
         
         function raf(time) {
-            lenis.raf(time);
+            window.lenis.raf(time);
             requestAnimationFrame(raf);
         }
         requestAnimationFrame(raf);
         
         if (typeof ScrollTrigger !== 'undefined') {
-            lenis.on('scroll', (e) => {
+            window.lenis.on('scroll', (e) => {
                 ScrollTrigger.update(e);
                 // Kinetic RGB Split effect based on velocity
                 const velocity = e.velocity || 0;
@@ -68,11 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.documentElement.style.setProperty('--secondary', `hsl(${Math.floor(hue2)}, 100%, 60%)`);
                 
                 // Update WebGL Grid Floor color
-                if (window.gridHelper) {
-                    window.gridHelper.material.color.setHSL(hue1 / 360, 1, 0.6);
-                }
+                try {
+                    if (window.gridHelper) {
+                        window.gridHelper.material.color.setHSL(hue1 / 360, 1, 0.6);
+                    }
+                } catch(e) {}
             });
-            gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
+            gsap.ticker.add((time)=>{ window.lenis.raf(time * 1000) });
             gsap.ticker.lagSmoothing(0);
         }
     }
@@ -265,10 +267,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            // Smooth scroll to section using GSAP
             const targetId = link.getAttribute('href');
-            if (typeof gsap !== 'undefined') {
+            if (window.lenis) {
+                window.lenis.scrollTo(targetId, { offset: -20, duration: 1.2 });
+            } else if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
                 gsap.to(window, {
                     duration: 1.2,
                     scrollTo: { y: targetId, offsetY: 20 },
@@ -450,35 +452,43 @@ function initChatbot() {
 }
 
 // Scroll Progress, Spy Logic & Scroll to Top
-window.addEventListener('scroll', () => {
-    // Progress Bar & Cursor Progress Ring
+let scrollRafId = null;
+const progressBar = document.querySelector('.progress-bar');
+const cursorProgress = document.querySelector('.cursor-progress');
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+function updateScrollSpyAndProgress() {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolledPercentage = winScroll / height;
     
-    const progressBar = document.querySelector('.progress-bar');
     if (progressBar) {
         progressBar.style.width = (scrolledPercentage * 100) + "%";
     }
     
-    const cursorProgress = document.querySelector('.cursor-progress');
+    const scrollHUD = document.getElementById('scroll-progress');
+    if (scrollHUD) {
+        scrollHUD.style.height = (scrolledPercentage * 100) + '%';
+    }
+    
     if (cursorProgress) {
         const circumference = 113; // 2 * pi * 18
         const offset = circumference - (scrolledPercentage * circumference);
         cursorProgress.style.strokeDashoffset = offset;
     }
     
-    // Scroll to Top Button
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    if (winScroll > 300) {
-        scrollTopBtn.style.display = "block";
-    } else {
-        scrollTopBtn.style.display = "none";
+    if (scrollTopBtn) {
+        if (winScroll > 300) {
+            scrollTopBtn.style.display = "block";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
     }
 
     // Scroll Spy
     let currentSection = '';
-    const sections = document.querySelectorAll('section');
     sections.forEach(sec => {
         const sectionTop = sec.offsetTop;
         if (winScroll >= sectionTop - 150) {
@@ -486,17 +496,29 @@ window.addEventListener('scroll', () => {
         }
     });
 
-    document.querySelectorAll('.nav-link').forEach(link => {
+    navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href').substring(1) === currentSection) {
             link.classList.add('active');
         }
     });
+    
+    scrollRafId = null;
+}
+
+window.addEventListener('scroll', () => {
+    if (!scrollRafId) {
+        scrollRafId = requestAnimationFrame(updateScrollSpyAndProgress);
+    }
 });
 
 // Scroll to top functionality
 document.getElementById('scrollTopBtn')?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.lenis) {
+        window.lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 });
 
 // Interactive Glass Glow & Cursor
@@ -1531,21 +1553,7 @@ function initShapeParallax() {
 }
 document.addEventListener('DOMContentLoaded', initShapeParallax);
 
-/* =========================================================================
-   Scroll Progress HUD Updater
-   ========================================================================= */
-function initScrollHUD() {
-    const scrollProgress = document.getElementById('scroll-progress');
-    if (!scrollProgress) return;
-    
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.body.scrollHeight - window.innerHeight;
-        const scrollPercent = scrollTop / docHeight;
-        scrollProgress.style.height = (scrollPercent * 100) + '%';
-    });
-}
-document.addEventListener('DOMContentLoaded', initScrollHUD);
+
 
 /* =========================================================================
    Custom Sci-Fi Mouse Cursor Logic
