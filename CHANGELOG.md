@@ -398,3 +398,9 @@
 - It features a static sub-pixel RGB matrix grid and a slow, infinitely animating glowing horizontal scanline.
 - The mix-blend-mode: overlay ensures it only affects the highlights, adding immense texture and grit to the cyberpunk aesthetic without hurting readability.
 
+
+### Iteration 17: Infinite 3D Cyber-Grid Floor
+- Expanded the WebGL environment by injecting a dynamic THREE.GridHelper.
+- The grid floor sits at the bottom of the 3D scene and continuously scrolls forward in the render loop, creating the illusion of infinite forward momentum through cyberspace.
+- This completes the legendary synthwave/outrun aesthetic, anchoring the floating 3D shapes to a recognizable horizon line.
+

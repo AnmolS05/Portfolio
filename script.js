@@ -1079,6 +1079,15 @@ function initParticles() {
     const geoGroup = new THREE.Group();
     scene.add(geoGroup);
     
+    // ==========================================
+    // ADD INFINITE SYNTHWAVE GRID FLOOR
+    // ==========================================
+    const gridHelper = new THREE.GridHelper(60, 60, 0x00e5ff, 0x00e5ff);
+    gridHelper.position.y = -4;
+    gridHelper.material.opacity = 0.15;
+    gridHelper.material.transparent = true;
+    scene.add(gridHelper);
+
     const geometries = [
         new THREE.IcosahedronGeometry(0.8, 0),
         new THREE.OctahedronGeometry(0.6, 0),
@@ -1147,6 +1156,12 @@ function initParticles() {
     function animate() {
         requestAnimationFrame(animate);
         uniforms.u_time.value += 0.003; // SLOWED DOWN
+
+        // Animate infinite grid floor
+        gridHelper.position.z += 0.02;
+        if (gridHelper.position.z > 1) {
+            gridHelper.position.z = 0;
+        }
 
         // Smooth mouse interpolation for shader
         uniforms.u_mouse.value.x += (targetMouse.x - uniforms.u_mouse.value.x) * 0.05;
