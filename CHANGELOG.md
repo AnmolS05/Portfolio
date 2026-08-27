@@ -334,3 +334,8 @@
 - Hooked Lenis requestAnimationFrame into GSAP ticker to ensure butter-smooth ScrollTrigger parity.
 - Instantly upgrades the UX to a premium cinematic scrolling feel.
 
+
+### Iteration 6: Magnetic UI Physics
+- Implemented 'Magnetic' physics on sidebar navigation links using GSAP.
+- Links now physically stretch and pull towards the user's cursor when hovered, creating an ultra-premium, tactile feel.
+

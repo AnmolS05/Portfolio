@@ -22,11 +22,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initBootSequence();
 
-    // Navigation Logic
+    // Navigation Logic & Magnetic Hover Effect
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section-block');
 
     navLinks.forEach(link => {
+        // Magnetic physics on hover
+        link.addEventListener('mousemove', (e) => {
+            const rect = link.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            if (typeof gsap !== 'undefined') {
+                gsap.to(link, {
+                    x: x * 0.4,
+                    y: y * 0.4,
+                    duration: 0.6,
+                    ease: "power3.out"
+                });
+            }
+        });
+
+        link.addEventListener('mouseleave', () => {
+            if (typeof gsap !== 'undefined') {
+                gsap.to(link, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "elastic.out(1, 0.3)"
+                });
+            }
+        });
+
         link.addEventListener('click', (e) => {
             e.preventDefault();
             
