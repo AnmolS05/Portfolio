@@ -81,7 +81,9 @@ function initChatbot() {
         addMessage(msg, 'user');
         chatInput.value = '';
 
-        const apiKey = 'AIzaSyDjuT3RC52SsilpdxgHyJksl3o216Yv8Tw';
+        // WARNING: Never hardcode API keys in frontend code.
+        // For production, use a backend server to proxy requests to the Gemini API.
+        const apiKey = ''; // KEY REMOVED DUE TO GITHUB PUSH PROTECTION
         if (!apiKey) return;
 
         const typingId = "typing-" + Date.now();

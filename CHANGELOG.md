@@ -199,3 +199,6 @@
 ## 2026-08-24 21:45:00
 - **Description:** Iteration 52: Restored the original glassmorphism portfolio design. Fixed the 'View Project' buttons by wrapping project cards in functional anchor tags. Corrected the Delhi University Certificate name. Added a dedicated 'Resume' tab with a newly integrated timeline UI for Education and Experience, and migrated the Core Stack progress bars to this new section.
 - **Files Affected:** `index.html`, `script.js`, `styles.css`, `data.js`
+- **Date**: 2026-08-27T17:23:00+05:30
+- **Description**: Replaced empty API key with the user-provided live key.
+- **Files affected**: script.js

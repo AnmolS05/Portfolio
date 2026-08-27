@@ -1,0 +1,188 @@
+project_root: .
+prompt_arg: audit 
+dump_dir: .frankenreview/dumps
+context_dir: .frankenreview
+chrome_debugger_url: http://127.0.0.1:9222
+chat_url: https://aistudio.google.com/prompts/new_chat?model=gemini-flash-latest
+max_cloud_tokens: 1000000
+chunk_size: 500000
+token_tree_max_files: 10
+use_temporary_chat: true
+preserve_clipboard: true
+review_output: .frankenreview/review.md
+priority_patterns:
+- config\.
+- main\.
+- __init__\.
+- setup\.
+- pyproject\.
+- package\.json
+- requirements\.txt
+- README
+- daemon\.
+- browser_client\.
+- governor\.
+- repo_dumper\.
+use_file_upload: true
+max_paste_size: 100000
+verbose_selectors: false
+headless_mode: true
+new_window_per_review: false
+selectors:
+  textarea: textarea[aria-label='Enter a prompt']
+  run_button: ms-run-button button[type='submit'], button.ms-button-primary[type='submit']:has-text('Run'), button:has-text('Run')
+  stop_button: ms-run-button button:has-text('Stop'), button[aria-label*='Stop'], button:has-text('Stop')
+  thinking_indicator: ms-chat-turn:last-of-type span:text-is('Thinking')
+  rerun_button: button[aria-label*='Rerun'], button[name='rerun-button']
+  thinking_level_select: ms-thinking-level-setting mat-select[aria-label='Thinking Level']
+  thinking_level_option: '[role="option"]'
+  response: ms-chat-turn, ms-markdown-block
+  more_options_button: button[aria-label='Open options']
+  copy_markdown_button: "button[role='menuitem']:has-text('Copy as markdown'), button:has-text('Copy as markdown')"
+  chat_menu_button: button[aria-label='View more actions']
+  temporary_chat_button: "[role='menuitem'][aria-label='Toggle temporary chat'], button[aria-label='Toggle temporary chat']"
+  delete_prompt_button: button[aria-label='Delete prompt']
+  dialog_container: mat-dialog-container
+  dialog_confirm_button: mat-dialog-container button.ms-button-primary
+  dialog_cancel_button: mat-dialog-container button:not(.ms-button-primary)
+  model_name: ms-model-selector button .title
+  attach_button: button[aria-label^='Insert']
+  file_input: input[type='file']
+silent_mode: true
+delete_after_review: true
+thinking_mode: true
+thinking_level: high
+screenshot_keep_max: 20
+mask_secrets: true
+custom_secret_patterns:
+# High-Specificity Token Patterns (Modern API Keys)
+- "\\bgh[pousr]_[a-zA-Z0-9]{36,255}\\b"  # GitHub (all token types)
+- "\\bglpat-[a-zA-Z0-9\\-]{20,}\\b"  # GitLab
+- "\\bAKIA[0-9A-Z]{16}\\b"  # AWS
+- "\\bxox[baprs]-[0-9a-zA-Z\\-]{10,}\\b"  # Slack
+- "\\bsk_(live|test)_[0-9a-zA-Z]{24,}\\b"  # Stripe
+- "\\bSG\\.[0-9a-zA-Z\\-_]{22}\\.[0-9a-zA-Z\\-_]{43}\\b"  # SendGrid
+- "\\bAIza[0-9A-Za-z\\-_]{35}\\b"  # Google (GCP/Gemini)
+- "\\bsk-(proj|ant)-[a-zA-Z0-9\\-_]{48,}\\b"  # OpenAI Modern (Project/Admin)
+- "\\bsk-[a-zA-Z0-9]{48}\\b"  # OpenAI Legacy
+- "\\bsk-ant-api03-[a-zA-Z0-9\\-_]{93}AA\\b"  # Anthropic Claude
+- "\\b(hf_[a-zA-Z0-9]{34})\\b"  # HuggingFace
+prune_dirs:
+- .env.*
+- .terraform/
+- .git
+- .hg
+- .svn
+- .idea
+- .vscode
+- .kiro
+- .build
+- __pycache__
+- .mypy_cache
+- .pytest_cache
+- .cache
+- .ruff_cache
+- node_modules
+- .next
+- .nuxt
+- dist
+- build
+- coverage
+- venv
+- .venv
+- env
+- site-packages
+- .aider.tags.cache.v4
+- Pods
+- DerivedData
+- .gradle
+- target
+- deleted
+- archive
+- old
+- backup
+- bak
+- dumps
+- out
+- .frankenreview
+- context
+- playwright-report
+prune_files:
+- .DS_Store
+- Thumbs.db
+- package-lock.json
+- yarn.lock
+- pnpm-lock.yaml
+- poetry.lock
+- Gemfile.lock
+- composer.lock
+- cargo.lock
+- .env
+- .env.local
+- .env.development
+- .env.production
+- .env.test
+- credentials.json
+- service_account.json
+- secrets.yaml
+- id_rsa
+- id_dsa
+- id_ed25519
+- .pem
+- .key
+- review.md
+- last_response_dump.html
+prune_exts:
+- .zip
+- .gz
+- .bz2
+- .xz
+- .tar
+- .rar
+- .7z
+- .mp4
+- .mp3
+- .mov
+- .wav
+- .avi
+- .wmv
+- .webm
+- .flv
+- .so
+- .dll
+- .dylib
+- .node
+- .wasm
+- .class
+- .o
+- .a
+- .exe
+- .bin
+- .pack
+- .db
+- .sqlite
+- .pkl
+- .onnx
+- .icns
+- .plist
+- .eot
+- .ttf
+- .woff
+- .woff2
+- .html
+- .htm
+- .mhtml
+- .webarchive
+- .min.js
+- .min.css
+- .map
+- .doc
+- .docx
+- .xls
+- .xlsx
+- .ppt
+- .pptx
+- .lock
+selector_metadata:
+  last_updated: '2026-02-16 10:20:44'
+  verified_by: src/frankenreview/utils/selector_discovery.py
