@@ -422,3 +422,9 @@
 - The volume and filter cutoff frequency of the 'wind' are directly mapped to the Lenis scroll velocity (e.velocity).
 - Scrolling rapidly now produces a cinematic 'whoosh' sound effect, adding intense kinetic audio feedback to the physical scroll motion.
 
+
+### Iteration 22: Procedural 3D Cyberpunk Terrain
+- Deformed the infinite WebGL GridHelper floor into a dynamic 3D mountain range/terrain.
+- Using a procedural sine/cosine mathematical displacement on the geometry's Y-axis, the edges of the grid now rise up into undulating wireframe mountains, while leaving a flat 'road' down the center.
+- Because the grid's Z-axis is continuously animated in the render loop, this creates the ultimate illusion of driving fast down a neon highway through a digital valley.
+

@@ -1162,6 +1162,21 @@ function initParticles() {
     window.gridHelper.position.y = -4;
     window.gridHelper.material.opacity = 0.15;
     window.gridHelper.material.transparent = true;
+    
+    // Deform into Cyberpunk Terrain
+    const pos = window.gridHelper.geometry.attributes.position.array;
+    for (let i = 0; i < pos.length; i += 3) {
+        const x = pos[i];
+        const z = pos[i+2];
+        const dist = Math.abs(x);
+        // Leave a flat "road" in the middle (dist < 8)
+        if (dist > 8) {
+            // Create undulating mountains on the edges based on x and z
+            pos[i+1] = (dist - 8) * (Math.sin(z * 0.5) + Math.cos(x * 0.3)) * 0.5;
+        }
+    }
+    window.gridHelper.geometry.attributes.position.needsUpdate = true;
+    
     scene.add(window.gridHelper);
 
     const geometries = [
