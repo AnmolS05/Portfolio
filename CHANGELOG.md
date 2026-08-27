@@ -351,3 +351,9 @@
 - Hides default cursor across the site.
 - Added magnetic hover interactions: when hovering over links or cards, the trailing ring expands and turns neon pink with a blur backdrop-filter.
 
+
+### Iteration 9: Procedural Sci-Fi Audio Synthesizer
+- Added the Web Audio API to synthesize zero-latency procedural UI sounds without needing external assets.
+- Interactive elements (links, cards, buttons) now emit subtle frequency-modulated sci-fi 'beeps' on hover and 'clicks' on mousedown.
+- Adds an auditory dimension to the portfolio, making the futuristic theme deeply immersive.
+

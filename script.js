@@ -59,6 +59,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initBootSequence();
 
+    // ==========================================
+    // Synthetic Sci-Fi UI Sound Effects (SFX)
+    // ==========================================
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+
+    function playHoverSound() {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+        
+        gain.gain.setValueAtTime(0.015, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+    }
+
+    function playClickSound() {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.1);
+        
+        gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.1);
+    }
+
+    // Attach SFX to all interactive elements, and init audio on first interaction (required by browsers)
+    window.addEventListener('click', initAudio, { once: true });
+    window.addEventListener('mousemove', initAudio, { once: true });
+
+    setTimeout(() => {
+        document.querySelectorAll('a, button, .nav-link, .card').forEach(el => {
+            el.addEventListener('mouseenter', playHoverSound);
+            el.addEventListener('mousedown', playClickSound);
+        });
+    }, 1000);
+
     // Navigation Logic & Magnetic Hover Effect
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section-block');
