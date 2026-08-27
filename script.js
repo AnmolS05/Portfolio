@@ -772,7 +772,7 @@ function initGSAPAnimations() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Section titles - Cinematic 3D Reveal (no letter splitting to prevent background-clip bugs)
+    // Section titles - Cinematic Reveal (no 3D transforms to prevent background-clip rendering bugs)
     gsap.utils.toArray('.section-title').forEach(title => {
         gsap.from(title, {
             scrollTrigger: {
@@ -782,7 +782,6 @@ function initGSAPAnimations() {
             },
             y: 30,
             opacity: 0,
-            rotationX: -45,
             duration: 1,
             ease: 'back.out(1.5)'
         });
