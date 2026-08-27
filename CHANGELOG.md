@@ -312,3 +312,8 @@
 - Added .gitignore for safe node_modules handling.
 - Deployed final architecture live to Vercel via Github.
 
+
+### Iteration 2 (New Loop): 3D Floating Cyber-Geometry
+- Added interactive wireframe 3D primitives (Icosahedrons, Octahedrons) to the background WebGL scene.
+- Implemented dynamic boundaries and mouse-tracking parallax for the 3D objects.
+

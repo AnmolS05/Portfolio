@@ -841,6 +841,48 @@ function initParticles() {
     const starMesh = new THREE.Points(starsGeometry, starMaterial);
     scene.add(starMesh);
 
+    // ==========================================
+    // ADD 3D FLOATING GEOMETRY
+    // ==========================================
+    const geoGroup = new THREE.Group();
+    scene.add(geoGroup);
+    
+    const geometries = [
+        new THREE.IcosahedronGeometry(0.8, 0),
+        new THREE.OctahedronGeometry(0.6, 0),
+        new THREE.TetrahedronGeometry(0.7, 0)
+    ];
+    
+    const materials = colorOptions.map(color => new THREE.MeshBasicMaterial({
+        color: color,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.15
+    }));
+    
+    const shapes = [];
+    for(let i = 0; i < 20; i++) {
+        const geo = geometries[Math.floor(Math.random() * geometries.length)];
+        const mat = materials[Math.floor(Math.random() * materials.length)];
+        const shape = new THREE.Mesh(geo, mat);
+        
+        shape.position.x = (Math.random() - 0.5) * 20;
+        shape.position.y = (Math.random() - 0.5) * 20;
+        shape.position.z = (Math.random() - 0.5) * 10 - 2;
+        
+        shape.rotation.x = Math.random() * Math.PI;
+        shape.rotation.y = Math.random() * Math.PI;
+        
+        const speed = {
+            rx: (Math.random() - 0.5) * 0.01,
+            ry: (Math.random() - 0.5) * 0.01,
+            x: (Math.random() - 0.5) * 0.01,
+            y: (Math.random() - 0.5) * 0.01
+        };
+        
+        shapes.push({ mesh: shape, speed: speed });
+        geoGroup.add(shape);
+    }
 
     // Mouse & Scroll tracking
     let targetMouse = { x: 0.5, y: 0.5 };
@@ -876,6 +918,22 @@ function initParticles() {
         starMesh.rotation.y += 0.0002; // SLOWED DOWN
         starMesh.rotation.x = (targetMouse.y - 0.5) * 0.05 + scrollY * 0.0001; // FIXED: Vastly reduced mouse influence
         starMesh.rotation.y += (targetMouse.x - 0.5) * 0.01; // FIXED: Vastly reduced mouse influence
+
+        // Animate floating geometry
+        shapes.forEach(shapeObj => {
+            shapeObj.mesh.rotation.x += shapeObj.speed.rx;
+            shapeObj.mesh.rotation.y += shapeObj.speed.ry;
+            shapeObj.mesh.position.x += shapeObj.speed.x;
+            shapeObj.mesh.position.y += shapeObj.speed.y;
+            
+            // Bounce off boundaries
+            if(Math.abs(shapeObj.mesh.position.x) > 12) shapeObj.speed.x *= -1;
+            if(Math.abs(shapeObj.mesh.position.y) > 12) shapeObj.speed.y *= -1;
+        });
+        
+        // Rotate geometry group based on mouse
+        geoGroup.rotation.x += ( (targetMouse.y - 0.5) * 0.3 - geoGroup.rotation.x ) * 0.05;
+        geoGroup.rotation.y += ( (targetMouse.x - 0.5) * 0.3 - geoGroup.rotation.y ) * 0.05;
 
         renderer.render(scene, camera);
     }
