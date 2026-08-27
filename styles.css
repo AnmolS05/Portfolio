@@ -1664,3 +1664,17 @@ body, a, button, .card, .nav-link { cursor: none !important; }
     transition: background 0.3s, border-color 0.3s;
 }
 
+
+
+/* Click Particle Explosion */
+.click-particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001; /* Above cursor */
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+}
+

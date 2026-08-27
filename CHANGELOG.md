@@ -357,3 +357,9 @@
 - Interactive elements (links, cards, buttons) now emit subtle frequency-modulated sci-fi 'beeps' on hover and 'clicks' on mousedown.
 - Adds an auditory dimension to the portfolio, making the futuristic theme deeply immersive.
 
+
+### Iteration 10: 3D Physics Particle Explosion
+- Engineered a 3D-feeling particle explosion system on click using GSAP.
+- Whenever the user clicks anywhere, 12 neon glowing particles burst out with independent vectors, fake gravity, and scale animations.
+- Combined with the WebGL shader shockwave and the new Audio API SFX, clicking now feels insanely tactile and satisfying.
+

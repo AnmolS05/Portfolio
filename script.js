@@ -109,6 +109,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Attach SFX to all interactive elements, and init audio on first interaction (required by browsers)
     window.addEventListener('click', initAudio, { once: true });
     window.addEventListener('mousemove', initAudio, { once: true });
+    
+    // Physics-based Particle Explosion on Click
+    window.addEventListener('click', (e) => {
+        const numParticles = 12;
+        const colors = ['#00e5ff', '#ff0055', '#ffffff'];
+        for (let i = 0; i < numParticles; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'click-particle';
+            document.body.appendChild(particle);
+            
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = 50 + Math.random() * 100;
+            const tx = Math.cos(angle) * velocity;
+            const ty = Math.sin(angle) * velocity;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            particle.style.left = e.clientX + 'px';
+            particle.style.top = e.clientY + 'px';
+            particle.style.background = color;
+            particle.style.boxShadow = `0 0 10px ${color}`;
+            
+            if (typeof gsap !== 'undefined') {
+                gsap.to(particle, {
+                    x: tx,
+                    y: ty + 40, // fake gravity
+                    opacity: 0,
+                    scale: 0.1,
+                    duration: 0.5 + Math.random() * 0.5,
+                    ease: "power2.out",
+                    onComplete: () => particle.remove()
+                });
+            }
+        }
+    });
 
     setTimeout(() => {
         document.querySelectorAll('a, button, .nav-link, .card').forEach(el => {
