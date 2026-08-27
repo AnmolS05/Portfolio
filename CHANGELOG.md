@@ -202,3 +202,6 @@
 - **Date**: 2026-08-27T17:23:00+05:30
 - **Description**: Replaced empty API key with the user-provided live key.
 - **Files affected**: script.js
+- **Date**: 2026-08-27T18:04:00+05:30
+- **Description**: Added a Vercel Serverless Function (api/chat.js) to securely proxy Gemini API requests and updated script.js to call this backend route, removing all exposed API keys.
+- **Files affected**: script.js, api/chat.js

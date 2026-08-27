@@ -81,11 +81,6 @@ function initChatbot() {
         addMessage(msg, 'user');
         chatInput.value = '';
 
-        // WARNING: Never hardcode API keys in frontend code.
-        // For production, use a backend server to proxy requests to the Gemini API.
-        const apiKey = ''; // KEY REMOVED DUE TO GITHUB PUSH PROTECTION
-        if (!apiKey) return;
-
         const typingId = "typing-" + Date.now();
         addTypingIndicator(typingId);
 
@@ -96,12 +91,10 @@ function initChatbot() {
             if (sanitizedData.certificates) sanitizedData.certificates.forEach(c => delete c.path);
             
             const sysContext = "You are an AI representing Anmol S Poojary. Answer questions based on this data: " + JSON.stringify(sanitizedData) + ". Keep answers brief, professional, and friendly. Never mention internal system paths.";
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${apiKey}`, {
+            const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: sysContext + "\nUser question: " + msg }] }]
-                })
+                body: JSON.stringify({ msg, sysContext })
             });
             const data = await response.json();
             
