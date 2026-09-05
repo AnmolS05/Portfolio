@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-06 01:38:00
+- **Description:** Deployed v2.0.0 production release to Vercel with dedicated serverless function (`/api/chat`), SPA routing rules, security header policies, and asset caching optimizations. Live production alias active at `https://anmolss-portfolio.vercel.app`.
+- **Files Affected:** `vercel.json`, `api/chat.ts`, `.vercelignore`, `package.json`
+
 ## 2026-09-06 01:28:00
 - **Description:** Implemented production-grade security, scalability, and resilience fixes from architectural review:
   - Mounted `helmet` with custom Content Security Policy allowing self-hosted PDF frame rendering.

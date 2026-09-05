@@ -10,3 +10,6 @@ coverage/
 anmol_s_portfolio.zip
 anmol_s_portfolio/
 deleted/
+
+.vercel
+.env*

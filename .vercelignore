@@ -1,0 +1,7 @@
+node_modules
+.git
+deleted
+anmol_s_portfolio.zip
+anmol_s_portfolio
+.env*
+!.env.example
