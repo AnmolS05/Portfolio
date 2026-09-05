@@ -309,7 +309,7 @@ export const EDUCATION: Education = {
   degree: "Bachelor of Technology (B.Tech)",
   field: "Computer Science and Engineering",
   period: "2023 — 2027",
-  status: "Undergraduate (3rd Year)",
+  status: "Undergraduate (Final Year / 4th Year)",
   location: "Nitte, Karnataka, India",
   highlights: [
     "Core Coursework: Data Structures & Algorithms, Object-Oriented Design, Operating Systems, Database Management Systems, Computer Networks, Machine Learning",
