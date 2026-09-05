@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-06 01:42:00
+- **Description:** Release v2.1.0: Full-stack portfolio production deployment. Includes:
+  - Vercel Serverless `/api/chat` integration with Gemma / Gemini grounding and fallback resilience.
+  - In-page credential viewing modal for verified certificates.
+  - HTTP Security headers (`helmet` CSP) and edge routing optimizations.
+  - Startup scroll viewport fix and input-sanitized rate limiting.
+  - Production verification at `https://anmolss-portfolio.vercel.app`.
+- **Files Affected:** `package.json`, `README.md`, `CHANGELOG.md`, `vercel.json`, `api/chat.ts`
+
 ## 2026-09-06 01:38:00
 - **Description:** Deployed v2.0.0 production release to Vercel with dedicated serverless function (`/api/chat`), SPA routing rules, security header policies, and asset caching optimizations. Live production alias active at `https://anmolss-portfolio.vercel.app`.
 - **Files Affected:** `vercel.json`, `api/chat.ts`, `.vercelignore`, `package.json`
