@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-06 01:23:00
+- **Description:** Fixed startup viewport jump where document-level `scrollIntoView` in chat components forced the entire window to scroll to the bottom on mount. Replaced with internal container scroll handlers guarded by mount detection.
+- **Files Affected:** `src/components/AiChatSection.tsx`, `src/components/AiFloatingChat.tsx`
+
 ## 2026-09-06 01:12:00
 - **Description:** Refactored credential viewing interface into a unified in-page viewer modal. Replaced external new-tab anchors and separate details buttons with a single "View Certificate" action that directly renders PDF documents and credential images within an in-page modal dialog.
 - **Files Affected:** `src/components/CertificatesSection.tsx`

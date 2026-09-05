@@ -14,14 +14,20 @@ export default function AiChatSection() {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const chatBottomRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    scrollToBottom();
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: "smooth"
+      });
+    }
   }, [messages, isLoading]);
 
   const handleSendMessage = async (textToSend?: string) => {
@@ -121,7 +127,7 @@ export default function AiChatSection() {
           </div>
 
           {/* Messages Scroll Area */}
-          <div className="flex-1 p-5 overflow-y-auto space-y-4">
+          <div ref={chatContainerRef} className="flex-1 p-5 overflow-y-auto space-y-4">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -163,7 +169,6 @@ export default function AiChatSection() {
                 </div>
               </div>
             )}
-            <div ref={chatBottomRef} />
           </div>
 
           {/* Quick Starter Question Chips */}

@@ -20,11 +20,14 @@ export default function AiFloatingChat({ isOpen, onClose, onOpen }: AiFloatingCh
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const chatBottomRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isOpen) {
-      chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (isOpen && chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: "smooth"
+      });
     }
   }, [messages, isOpen]);
 
@@ -126,7 +129,7 @@ export default function AiFloatingChat({ isOpen, onClose, onOpen }: AiFloatingCh
           </div>
 
           {/* Messages */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+          <div ref={chatContainerRef} className="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -167,7 +170,6 @@ export default function AiFloatingChat({ isOpen, onClose, onOpen }: AiFloatingCh
                 </div>
               </div>
             )}
-            <div ref={chatBottomRef} />
           </div>
 
           {/* Quick Prompts */}
