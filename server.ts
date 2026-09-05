@@ -3,13 +3,46 @@ import path from "path";
 import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
-app.use(express.json());
+// Security Headers with permissive CSP for self-hosted PDF objects/iframes
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
+        imgSrc: ["'self'", "data:", "blob:", "https:"],
+        objectSrc: ["'self'", "blob:", "data:"],
+        frameSrc: ["'self'", "blob:", "data:"],
+        connectSrc: ["'self'", "https://generativelanguage.googleapis.com", "https://*.google.com"],
+      },
+    },
+    crossOriginEmbedderPolicy: false,
+  })
+);
+
+// Payload size capping to prevent memory exhaustion
+app.use(express.json({ limit: "16kb" }));
+
+// Rate limiter for Chat API (max 30 queries per 15 minutes per IP)
+const chatRateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    reply: "Rate limit reached for AI queries. Please wait a few minutes before asking another question, or reach Anmol directly via email at anmolspoojary@gmail.com.",
+  },
+});
 
 // Lazy-initialized Gemini client
 let genAIClient: GoogleGenAI | null = null;
@@ -99,25 +132,31 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", engineer: "Anmol S Poojary" });
 });
 
-app.post("/api/chat", async (req, res) => {
+app.post("/api/chat", chatRateLimiter, async (req, res) => {
   try {
     const { message, history } = req.body;
     if (!message || typeof message !== "string") {
       return res.status(400).json({ error: "Message is required" });
     }
 
+    // Input sanitization and length capping (protect against prompt bloat)
+    const sanitizedMessage = message.trim().slice(0, 500);
+    if (!sanitizedMessage) {
+      return res.status(400).json({ error: "Valid message content is required" });
+    }
+
     const ai = getGenAI();
 
     if (ai) {
-      // Format chat contents with context
+      // Format chat contents with context (limit to last 4 turns)
       const chatContents: Array<{ role: string; parts: Array<{ text: string }> }> = [];
 
       if (Array.isArray(history)) {
-        for (const item of history.slice(-6)) {
+        for (const item of history.slice(-4)) {
           if (item && item.text && (item.role === "user" || item.role === "model")) {
             chatContents.push({
               role: item.role,
-              parts: [{ text: String(item.text) }],
+              parts: [{ text: String(item.text).slice(0, 500) }],
             });
           }
         }
@@ -125,10 +164,12 @@ app.post("/api/chat", async (req, res) => {
 
       chatContents.push({
         role: "user",
-        parts: [{ text: message }],
+        parts: [{ text: sanitizedMessage }],
       });
 
-      const response = await ai.models.generateContent({
+      // Wrap outbound call with a 10-second timeout promise
+      const timeoutMs = 10000;
+      const generatePromise = ai.models.generateContent({
         model: "gemma-4-26b-a4b-it",
         contents: chatContents,
         config: {
@@ -137,6 +178,11 @@ app.post("/api/chat", async (req, res) => {
         },
       });
 
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Upstream LLM timeout")), timeoutMs)
+      );
+
+      const response: any = await Promise.race([generatePromise, timeoutPromise]);
       const reply = response.text || "I'm ready to answer any questions about Anmol's work and experience!";
       return res.json({ reply });
     } else {

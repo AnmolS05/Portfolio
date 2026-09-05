@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-06 01:28:00
+- **Description:** Implemented production-grade security, scalability, and resilience fixes from architectural review:
+  - Mounted `helmet` with custom Content Security Policy allowing self-hosted PDF frame rendering.
+  - Added strict payload size limits (`16kb`) to prevent memory exhaustion attacks.
+  - Implemented `express-rate-limit` (30 requests/15 min per IP) on `/api/chat` to protect upstream quotas and prevent denial-of-service.
+  - Hardened `/api/chat` with input length trimming (500 chars) and a 10-second upstream timeout promise race to prevent connection starvation.
+  - Added "Open Full View" fallback link to the certificate modal for mobile and restricted WebKit environments.
+- **Files Affected:** `server.ts`, `package.json`, `src/components/CertificatesSection.tsx`
+
 ## 2026-09-06 01:23:00
 - **Description:** Fixed startup viewport jump where document-level `scrollIntoView` in chat components forced the entire window to scroll to the bottom on mount. Replaced with internal container scroll handlers guarded by mount detection.
 - **Files Affected:** `src/components/AiChatSection.tsx`, `src/components/AiFloatingChat.tsx`

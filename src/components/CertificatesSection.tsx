@@ -188,12 +188,26 @@ export default function CertificatesSection() {
                   <span>Credential Verified</span>
                 </div>
 
-                <button
-                  onClick={() => setSelectedCert(null)}
-                  className="px-5 py-2 rounded-xl text-xs font-semibold bg-white/[0.08] hover:bg-white/[0.14] text-white transition-colors"
-                >
-                  Close
-                </button>
+                <div className="flex items-center gap-2">
+                  {selectedCert.documentUrl && (
+                    <a
+                      href={selectedCert.documentUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 hover:text-white border border-white/[0.08] transition-colors inline-flex items-center gap-1.5"
+                      title="Open or download original document"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Open Full View</span>
+                    </a>
+                  )}
+                  <button
+                    onClick={() => setSelectedCert(null)}
+                    className="px-5 py-2 rounded-xl text-xs font-semibold bg-white/[0.08] hover:bg-white/[0.14] text-white transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </div>
