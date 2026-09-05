@@ -120,9 +120,9 @@ export default async function handler(req: any, res: any) {
         parts: [{ text: sanitizedMessage }],
       });
 
-      const timeoutMs = 10000;
+      const timeoutMs = 15000;
       const generatePromise = ai.models.generateContent({
-        model: "gemma-4-26b-a4b-it",
+        model: "gemini-3.5-flash-lite",
         contents: chatContents,
         config: {
           systemInstruction: SYSTEM_PROMPT,

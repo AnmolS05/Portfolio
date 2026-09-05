@@ -167,10 +167,10 @@ app.post("/api/chat", chatRateLimiter, async (req, res) => {
         parts: [{ text: sanitizedMessage }],
       });
 
-      // Wrap outbound call with a 10-second timeout promise
-      const timeoutMs = 10000;
+      // Wrap outbound call with a 15-second timeout promise
+      const timeoutMs = 15000;
       const generatePromise = ai.models.generateContent({
-        model: "gemma-4-26b-a4b-it",
+        model: "gemini-3.5-flash-lite",
         contents: chatContents,
         config: {
           systemInstruction: SYSTEM_PROMPT,
