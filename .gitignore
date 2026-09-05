@@ -1,3 +1,12 @@
-.vercel
 node_modules/
-.env
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+.vercel/
+anmol_s_portfolio.zip
+anmol_s_portfolio/
+deleted/

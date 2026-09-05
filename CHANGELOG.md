@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-06 01:12:00
+- **Description:** Refactored credential viewing interface into a unified in-page viewer modal. Replaced external new-tab anchors and separate details buttons with a single "View Certificate" action that directly renders PDF documents and credential images within an in-page modal dialog.
+- **Files Affected:** `src/components/CertificatesSection.tsx`
+
 ## 2026-08-24 11:45:00
 - **Description:** Initialized next-level portfolio base. Created data aggregation script, styled index with glassmorphism and left sidebar. Added dynamic js script.
 - **Files Affected:** `index.html`, `styles.css`, `script.js`, `update_data.py`, `data.js`
@@ -193,7 +197,7 @@
 - **Files Affected:** `index.html`, `styles.css`, `script.js`
 
 ## 2026-08-24 13:26:00
-- **Description:** Iteration 50: Ingested new certificates via update_data.py. Added an Interactive Particle Network Background using HTML5 Canvas. A constellation of purple/accent particles now gently float behind the glass panels of the portfolio. They subtly react to your mouse movements—connecting with lines when close to each other, and dodging the cursor. This gives the entire site a highly dynamic, living backdrop.
+- **Description:** Iteration 50: Ingested new certificates via update_data.py. Added an Interactive Particle Network Background using HTML5 Canvas. A constellation of purple/accent particles now gently float behind the glass panels of the portfolio. They subtly react to your mouse movementsconnecting with lines when close to each other, and dodging the cursor. This gives the entire site a highly dynamic, living backdrop.
 - **Files Affected:** `index.html`, `styles.css`, `script.js`
 
 ## 2026-08-24 21:45:00
@@ -407,7 +411,8 @@
 
 ### Iteration 18: Cinematic 3D Letter Reveal for Section Titles
 - Replaced the basic slide-in animation for section headers with an advanced GSAP SplitText simulation.
-- As you scroll down the page, section titles ('Projects', 'Certificates') now physically unfold letter-by-letter in 3D space (otationX), staggering perfectly.
+- As you scroll down the page, section titles ('Projects', 'Certificates') now physically unfold letter-by-letter in 3D space (
+otationX), staggering perfectly.
 - It drastically elevates the production value and gives a futuristic, highly engineered feel to the layout's typography.
 
 
@@ -427,4 +432,28 @@
 - Deformed the infinite WebGL GridHelper floor into a dynamic 3D mountain range/terrain.
 - Using a procedural sine/cosine mathematical displacement on the geometry's Y-axis, the edges of the grid now rise up into undulating wireframe mountains, while leaving a flat 'road' down the center.
 - Because the grid's Z-axis is continuously animated in the render loop, this creates the ultimate illusion of driving fast down a neon highway through a digital valley.
+
+## 2026-09-06 00:03:00
+- **Description:** Optimized cursor performance, eliminated text scramble jitter, and added premium Apple-inspired GPU card hover animations. Streamlined Lenis scroll loop and removed procedural audio/rotation bottlenecks for O(1) frame time.
+- **Files Affected:** script.js, styles.css
+
+## 2026-09-06 00:06:00
+- **Description:** Generated comprehensive structured XML representation of the portfolio codebase (project.xml) encompassing core source files, configurations, markup, and styles.
+- **Files Affected:** project.xml
+
+## 2026-09-06 00:58:00
+- **Description:** Replaced legacy static portfolio codebase with modern React 19 + TypeScript + Tailwind CSS production app from anmol_s_portfolio. Configured environment variables (.env), migrated legacy files to deleted/, served certificate PDFs in public/cer with direct document links, integrated official resume download, and verified live Google Gemini AI assistant backend.
+- **Files Affected:** package.json, server.ts, ite.config.ts, 	sconfig.json, index.html, src/types.ts, src/data/portfolioData.ts, src/components/CertificatesSection.tsx, src/components/ResumeModal.tsx, public/cer/, public/Anmol_S__resume.pdf
+
+## 2026-09-06 01:02:00
+- **Description:** Switched API backend model to Google DeepMind's Gemma 4 26B (gemma-4-26b-a4b-it) via the Gemini API endpoint. Verified system instructions, conversation context memory, and live inference responses.
+- **Files Affected:** server.ts, src/components/AiChatSection.tsx
+
+## 2026-09-06 01:06:00
+- **Description:** Removed all 'powered by Google Gemini' and third-party model branding mentions across chatbot initial greetings, fallback responses, and system instructions.
+- **Files Affected:** src/components/AiChatSection.tsx, src/components/AiFloatingChat.tsx, server.ts
+
+## 2026-09-06 01:09:00
+- **Description:** Replaced generic demo starter questions in the AI chatbot with focused engineering inquiries covering AeroInsight's dual-AI telemetry architecture, production full-stack systems, internship ML algorithms, and medical prescription verification.
+- **Files Affected:** src/data/portfolioData.ts
 
