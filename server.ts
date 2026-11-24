@@ -17,13 +17,13 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://va.vercel-scripts.com"],
         styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
         fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
         imgSrc: ["'self'", "data:", "blob:", "https:"],
         objectSrc: ["'self'", "blob:", "data:"],
         frameSrc: ["'self'", "blob:", "data:"],
-        connectSrc: ["'self'", "https://generativelanguage.googleapis.com", "https://*.google.com"],
+        connectSrc: ["'self'", "https://generativelanguage.googleapis.com", "https://*.google.com", "https://va.vercel-scripts.com"],
       },
     },
     crossOriginEmbedderPolicy: false,

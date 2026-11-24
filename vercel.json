@@ -15,7 +15,7 @@
         { "key": "Referrer-Policy", "value": "no-referrer" },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: blob: https:; object-src 'self' blob: data:; frame-src 'self' blob: data:; connect-src 'self' https://generativelanguage.googleapis.com https://*.google.com"
+          "value": "default-src 'self'; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com; img-src 'self' data: blob: https:; object-src 'self' blob: data:; frame-src 'self' blob: data:; connect-src 'self' https://generativelanguage.googleapis.com https://*.google.com https://va.vercel-scripts.com"
         }
       ]
     },

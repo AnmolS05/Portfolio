@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ProjectsSection from "./components/ProjectsSection";
@@ -73,6 +74,8 @@ export default function App() {
         onOpen={() => setIsAiChatOpen(true)}
         onClose={() => setIsAiChatOpen(false)}
       />
+
+      <Analytics />
     </div>
   );
 }

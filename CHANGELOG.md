@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-24 09:25:00
+- **Description:** Integrated Vercel Web Analytics (@vercel/analytics). Added `<Analytics />` component to root layout and updated Content Security Policy (CSP) headers in vercel.json and server.ts to permit `https://va.vercel-scripts.com`.
+- **Files Affected:** `package.json`, `package-lock.json`, `src/App.tsx`, `vercel.json`, `server.ts`, `CHANGELOG.md`
+
 ## 2026-11-24 08:30:00
 - **Description:** Corrected Orbits project details in portfolio data and AI copilot system prompts to accurately reflect its architecture as a high-performance, local-first Android networking contact application with LinkedIn share sheet targets, Jetpack Compose UI, Room SQLite persistence, and StateFlow UDF reactive mechanics. Synchronized filter tab counts dynamically in the projects section.
 - **Files Affected:** `src/data/portfolioData.ts`, `src/components/ProjectsSection.tsx`, `api/chat.ts`, `server.ts`, `CHANGELOG.md`
