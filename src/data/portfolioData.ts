@@ -47,6 +47,7 @@ export const PROJECTS: Project[] = [
     description: "Enterprise Indian Business CRM featuring automated financial health diagnostics, interactive Kanban deal pipelines, and an AI-Powered Financial Advisor.",
     detailedDescription: "Designed for modern commercial teams, CapitalFlow Pro unifies customer relationships with fiscal intelligence. Includes automated cash-flow forecasting, multi-stage sales opportunity tracking, and Gemini-assisted advisory reports tailored to Indian business tax structures.",
     technologies: ["React", "Node.js", "Gemini AI", "Tailwind CSS", "REST API"],
+    liveUrl: "https://capitalflow-pro.vercel.app/",
     githubUrl: "https://github.com/AnmolS05/AI-Powered-Sales-Intelligence-Dashboard",
     highlights: [
       "Dynamic Kanban sales pipeline with drag-and-drop deal stage management",

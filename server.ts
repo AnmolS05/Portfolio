@@ -83,7 +83,7 @@ KEY PROJECTS (Featured):
    - Tech: React, Node.js, Google Gemini, Tailwind CSS, Leaflet.js. Live at https://aero-insights-live.vercel.app/
 2. CapitalFlow Pro:
    - Indian Business CRM & AI Financial Advisor with automated expense intelligence and Kanban sales pipeline.
-   - Tech: React, Node.js, Gemini AI, Tailwind CSS.
+   - Tech: React, Node.js, Gemini AI, Tailwind CSS. Live at https://capitalflow-pro.vercel.app/
 3. AI Resume Screening ATS:
    - Automated candidate ranking, skills classification, and email ingestion system using NLP & Gemini.
    - Tech: React, Python, Flask, SQLite, Gemini API.

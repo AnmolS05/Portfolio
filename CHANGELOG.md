@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-24 12:35:00
+- **Description:** Added live production URL (https://capitalflow-pro.vercel.app/) for CapitalFlow Pro in portfolio data, AI chat copilot system prompt, and server models. Added direct script loader for `/_vercel/insights/script.js` in `index.html`.
+- **Files Affected:** `src/data/portfolioData.ts`, `api/chat.ts`, `server.ts`, `index.html`, `CHANGELOG.md`
+
 ## 2026-11-24 09:25:00
 - **Description:** Integrated Vercel Web Analytics (@vercel/analytics). Added `<Analytics />` component to root layout and updated Content Security Policy (CSP) headers in vercel.json and server.ts to permit `https://va.vercel-scripts.com`.
 - **Files Affected:** `package.json`, `package-lock.json`, `src/App.tsx`, `vercel.json`, `server.ts`, `CHANGELOG.md`
