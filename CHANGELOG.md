@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-24 08:30:00
+- **Description:** Corrected Orbits project details in portfolio data and AI copilot system prompts to accurately reflect its architecture as a high-performance, local-first Android networking contact application with LinkedIn share sheet targets, Jetpack Compose UI, Room SQLite persistence, and StateFlow UDF reactive mechanics. Synchronized filter tab counts dynamically in the projects section.
+- **Files Affected:** `src/data/portfolioData.ts`, `src/components/ProjectsSection.tsx`, `api/chat.ts`, `server.ts`, `CHANGELOG.md`
+
 ## 2026-09-06 01:42:00
 - **Description:** Release v2.1.0: Full-stack portfolio production deployment. Includes:
   - Vercel Serverless `/api/chat` integration with Gemma / Gemini grounding and fallback resilience.

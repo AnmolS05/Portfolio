@@ -100,8 +100,8 @@ KEY PROJECTS (Featured):
    - 3D Biometric signature & spatial gesture recognition authentication system.
    - Tech: Three.js, Python, TensorFlow, React.
 8. Orbits:
-   - Interactive 3D orbital mechanics and astrophysics trajectory simulation.
-   - Tech: Three.js, WebGL, React, Physics simulation.
+   - High-performance, local-first Android app for capturing & organizing professional networking contacts directly from LinkedIn.
+   - Tech: Android, Kotlin, Jetpack Compose, Room SQLite, Coroutines, StateFlow.
 9. Fake News Detection:
    - NLP classification pipeline detecting misinformation using TF-IDF and deep learning.
    - Tech: Python, Scikit-Learn, Flask.

@@ -142,18 +142,19 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "orbits",
-    name: "Orbits Astrophysics Simulator",
-    tag: "WebGL & Physics",
-    category: "graphics",
-    categoryLabel: "3D & Simulation",
-    description: "Interactive 3D orbital mechanics and astrophysics visualizer. Accurately simulates gravitational n-body physics, planetary bodies, and satellite transfer trajectories in real-time.",
-    detailedDescription: "Runs high-precision gravitational physics integration in JavaScript/WebGL. Users can inject custom celestial masses, adjust velocity vectors, observe orbital resonance, and track Keplerian trajectories with dynamic camera orbit controls.",
-    technologies: ["Three.js", "WebGL", "React", "Physics Simulation", "GLSL"],
+    name: "Orbits",
+    tag: "Local-First Android",
+    category: "fullstack",
+    categoryLabel: "Android & Systems",
+    description: "High-performance, local-first Android application designed to seamlessly capture, structure, and organize professional networking contacts directly from LinkedIn using native system share targets and an ultra-dense, Instagram DM-inspired interface.",
+    detailedDescription: "Orbits is a high-performance, local-first Android application designed to seamlessly capture, structure, and organize professional networking contacts directly from LinkedIn using native system share targets and an ultra-dense, Instagram DM-inspired interface. Built with Jetpack Compose, Kotlin Coroutines, and Room SQLite with reactive StateFlow pipelines.",
+    technologies: ["Kotlin", "Jetpack Compose", "Room SQLite", "Coroutines", "StateFlow", "Android SDK"],
     githubUrl: "https://github.com/AnmolS05/Orbits",
     highlights: [
-      "Real-time n-body gravitational physics solver with numerical orbital integration",
-      "Interactive celestial body creation with mass, velocity, and trajectory controls",
-      "Dynamic orbital trail renders with 60 FPS WebGL camera navigation"
+      "Frictionless Share Sheet Targets: Zero-UI Quick Orbit background intent handler and translucent Tag & Save Compose modal for LinkedIn profile capture",
+      "High-Density Instagram-Style List: Compact 88dp–100dp profile rows showing 5–6 contacts per screen with custom dynamic gradient rings for follow-up reminders",
+      "3D Tactile Interaction Mechanics: Micro-animations with spring-physics scale modifiers (ModifierExt.kt) delivering responsive haptic touch feedback",
+      "Unidirectional Data Flow & Offline Analytics: Pure reactive state architecture with StateFlow filtering and an embedded Room SQLite metric analytics dashboard"
     ],
     featured: false
   },

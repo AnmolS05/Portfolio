@@ -38,10 +38,10 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
           {/* Filter Pills */}
           <div className="flex flex-wrap items-center gap-1.5 p-1 bg-white/[0.03] border border-white/[0.08] rounded-xl self-start md:self-auto">
             {[
-              { id: 'all', label: 'All (9)' },
-              { id: 'ai', label: 'AI & Vision (5)' },
-              { id: 'fullstack', label: 'Full-Stack (2)' },
-              { id: 'graphics', label: '3D & Graphics (2)' },
+              { id: 'all', label: `All (${PROJECTS.length})` },
+              { id: 'ai', label: `AI & Vision (${PROJECTS.filter((p) => p.category === 'ai').length})` },
+              { id: 'fullstack', label: `Full-Stack (${PROJECTS.filter((p) => p.category === 'fullstack').length})` },
+              { id: 'graphics', label: `3D & Graphics (${PROJECTS.filter((p) => p.category === 'graphics').length})` },
             ].map((tab) => (
               <button
                 key={tab.id}
